@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Angela Yang</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="/attachments/favicon.png">
+    </head>
+    <body>
+        <div class="darkmode"><ion-icon name="invert-mode-outline"></ion-icon></div>
+        <div class="intro">Hi, I'm Angela Yang</div>
+        <div class="clickables">
+            <li>
+                <a href="https://github.com/ayang007" target="_blank" title="github"><ion-icon name="logo-github"></ion-icon></a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/angela-yang-407389227/" target="_blank" title="linkedin"><ion-icon name="logo-linkedin"></ion-icon></a>
+            </li>
+            <li>
+                <a href="mailto:ayangelah@gmail.com" title="email"><ion-icon name="mail"></ion-icon></a>
+            </li>
+        </div>
+        <div class="menu">
+            <div class="toggle"><ion-icon name="power-outline"></ion-icon></div>
+            <li style="--i:0;">
+                <a href="attachments/Resume 1_30_22 (2).pdf" target="_blank" title="resume"><ion-icon name="body-outline"></ion-icon></a>
+            </li>
+            <li style="--i:1;">
+                <a href="#" title="education"><ion-icon name="school-outline"></ion-icon></a>
+            </li>
+            <li style="--i:2;">
+                <a href="#" title="computer science portfolio"><ion-icon name="code-slash-outline"></ion-icon></a>
+            </li>
+            <li style="--i:3;">
+                <a href="https://www.artpal.com/jackelope" target="_blank" title="art portfolio"><ion-icon name="color-palette-outline"></ion-icon></a>
+            </li>
+            <li style="--i:4;">
+                <a href="blog.html" title="blog"><ion-icon name="chatbubble-outline"></ion-icon></a>
+            </li>
+            <li style="--i:5;">
+                <a href="https://open.spotify.com/user/32yl40xhp98r8uziid81m33xo?si=86f01a2452a14632" title="music"><ion-icon name="musical-notes-outline"></ion-icon></a>
+            </li>
+            
+        </div>
+        <div class="copyright"><p>copyright 2022 Angela Yang</p></div>
+        
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <script>
+            let toggle = document.querySelector('.toggle');
+            let menu = document.querySelector('.menu');
+            let menulabels = document.querySelector('.menulabels');
+            toggle.onclick = function(){
+                menu.classList.toggle('active')
+                menulabels.classList.toggle('active')
+            }
+        </script>
+
+        <script>
+            let darkmode = document.querySelector('.darkmode');
+            let clickables = document.querySelector('.clickables');
+            let body = document.querySelector('.body');
+            darkmode.onclick = function() {
+                menu.classList.toggle('dark')
+                menulabels.classList.toggle('dark')
+                body.classList.toggle('dark')
+            }
+        </script>
+
+    </body>
+</html>
