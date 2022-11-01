@@ -10,7 +10,12 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg, rgb(255, 146, 164), yellow)
+    background: linear-gradient(45deg, rgb(255, 146, 164), yellow);
+    transition: background-color 5s ease;
+}
+
+body.dark {
+    background: linear-gradient(45deg, rgb(80, 80, 222), rgb(102, 24, 102))
 }
 
 .arrow {
@@ -142,6 +147,7 @@ body {
     transform: rotate(360deg);
 }
 
+/*
 .menulabels {
     position: absolute;
     width: 660px;
@@ -179,6 +185,7 @@ body {
     animation: fadeIn 3s;
     visibility: visible;
 }
+*/
 
 .sidestuff {
     background-color: green;

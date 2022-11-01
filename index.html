@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/x-icon" href="/attachments/favicon.png">
     </head>
-    <body>
-        <div class="darkmode"><ion-icon name="invert-mode-outline"></ion-icon></div>
+    <body class="body">
+        <div class="darkmode" id="darkmode"><ion-icon name="invert-mode-outline"></ion-icon></div>
         <div class="intro">Hi, I'm Angela Yang</div>
         <div class="clickables">
             <li>
@@ -23,7 +23,7 @@
         <div class="menu">
             <div class="toggle"><ion-icon name="power-outline"></ion-icon></div>
             <li style="--i:0;">
-                <a href="attachments/Resume 1_30_22 (2).pdf" target="_blank" title="resume"><ion-icon name="body-outline"></ion-icon></a>
+                <a href="attachments/Resume 10_11_22.pdf" target="_blank" title="resume"><ion-icon name="body-outline"></ion-icon></a>
             </li>
             <li style="--i:1;">
                 <a href="#" title="education"><ion-icon name="school-outline"></ion-icon></a>
@@ -50,10 +50,9 @@
         <script>
             let toggle = document.querySelector('.toggle');
             let menu = document.querySelector('.menu');
-            let menulabels = document.querySelector('.menulabels');
-            toggle.onclick = function(){
+            toggle.onclick = function() {
                 menu.classList.toggle('active')
-                menulabels.classList.toggle('active')
+                console.log("toggle")
             }
         </script>
 
@@ -62,8 +61,6 @@
             let clickables = document.querySelector('.clickables');
             let body = document.querySelector('.body');
             darkmode.onclick = function() {
-                menu.classList.toggle('dark')
-                menulabels.classList.toggle('dark')
                 body.classList.toggle('dark')
             }
         </script>
