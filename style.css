@@ -52,6 +52,18 @@ body.dark {
     visibility: hidden;
 }
 
+.quadranta {
+    position: absolute;
+    left: 10vw;
+    top: 10vh;
+    border: green;
+    border-style: solid;
+    border-width: 10px;
+    color: rebeccapurple;
+    width: 25%;
+    height: 40vh;
+}
+
 .copyright {
     position: absolute;
     bottom: 10px;
