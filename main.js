@@ -1,7 +1,8 @@
-import './style.css'
+import './style.css';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
+import { gsap } from "gsap";
 
 const scene = new THREE.Scene()
 
@@ -9,6 +10,7 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 //models
 const islandUrl = new URL('./assets/island.glb', import.meta.url)
+const rocksUrl = new URL('./assets/rocks.glb', import.meta.url)
 const treehouseUrl = new URL('./assets/treehouse.glb', import.meta.url)
 const whaleUrl = new URL('./assets/whale.glb', import.meta.url)
 const airplaneUrl = new URL('./assets/airplane.glb', import.meta.url)
@@ -43,38 +45,56 @@ const assetLoader = new GLTFLoader();
 
 //loading assets
 assetLoader.load(islandUrl.href, function(gltf) {
-    const model = gltf.scene;
-    scene.add(model);
-    model.userData.clickable = false;
-    model.userData.name = "island";
-    model.position.set(0, 0, 0);
+    const island = gltf.scene;
+    scene.add(island);
+    island.userData.clickable = false;
+    island.userData.name = "island";
+    island.position.set(0, 0, 0);
 }, undefined, function(error) {
     console.error(error);
 });
 
+var rocks;
+assetLoader.load(rocksUrl.href, function(gltf) {
+    rocks = gltf.scene;
+    scene.add(rocks);
+    rocks.userData.clickable = false;
+    rocks.userData.name = "rocks";
+    rocks.position.set(0, 0, 0);
+    gsap.to( rocks.position, {
+        duration: 2,
+        y: 0.5,
+        yoyo: true,
+        repeat: -1,
+        ease: "power1.inOut"
+      } );
+}, undefined, function(error) {
+    console.error(error);
+});
+
+var treehouse;
 assetLoader.load(treehouseUrl.href, function(gltf) {
-    const model = gltf.scene;
-    scene.add(model);
-    model.userData.clickable = true;
-    model.userData.name = "treehouse";
-    model.position.set(0, 0, 0);
+    treehouse = gltf.scene;
+    scene.add(treehouse);
+    treehouse.userData.clickable = true;
+    treehouse.userData.name = "treehouse";
+    treehouse.position.set(0, 0, 0);
 }, undefined, function(error) {
     console.error(error);
 });
 
-let mixer;
+let whalemixer;
 var whale = new THREE.Object3D;
 assetLoader.load(whaleUrl.href, function(gltf) {
-    const model = gltf.scene;
-    whale = model;
-    scene.add(model);
-    model.userData.clickable = true;
-    model.userData.name = "whale";
-    model.position.set(0, 0, 0);
-    mixer = new THREE.AnimationMixer(model);
+    whale = gltf.scene;
+    scene.add(whale);
+    whale.userData.clickable = true;
+    whale.userData.name = "whale";
+    whale.position.set(0, 0, 0);
+    whalemixer = new THREE.AnimationMixer(whale);
     const clips = gltf.animations;
     clips.forEach(function(clip) {
-        const action = mixer.clipAction(clip);
+        const action = whalemixer.clipAction(clip);
         action.play();
     });
 }, undefined, function(error) {
@@ -83,12 +103,11 @@ assetLoader.load(whaleUrl.href, function(gltf) {
 
 var airplane;
 assetLoader.load(airplaneUrl.href, function(gltf) {
-    const model = gltf.scene;
-    airplane = model;
-    scene.add(model);
-    model.userData.clickable = true;
-    model.userData.name = "airplane";
-    model.position.set(0, 0, 0);
+    airplane = gltf.scene;
+    scene.add(airplane);
+    airplane.userData.clickable = true;
+    airplane.userData.name = "airplane";
+    airplane.position.set(0, 0, 0);
 }, undefined, function(error) {
     console.error(error);
 });
@@ -113,16 +132,17 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function clickMesh() {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(scene.children);
-    if (intersects.length != 0 && intersects[0].object.name == "whale") {
-        alert("hi")
+    if (intersects.length != 0 && intersects[0].object.userData.name && intersects[0].object.userData.clickable) {
+        found = intersects[0].object
+        console.log('found clickable')
     }
 }
 
 const clock = new THREE.Clock();
 function animate() {
     requestAnimationFrame( animate );
-    if(mixer)
-        mixer.update(clock.getDelta());
+    if(whalemixer)
+        whalemixer.update(clock.getDelta());
 
     if (whale) {
         whale.rotateY(-0.004);
