@@ -29,6 +29,7 @@ materialArray.push(new THREE.MeshBasicMaterial( {map: texture_lf, side: THREE.Ba
 
 
 let skybox = new THREE.Mesh(skyboxgeo, materialArray);
+skybox.name = "skybox"
 scene.add(skybox);
 
 //models
@@ -38,7 +39,7 @@ const treehouseUrl = new URL('./assets/treehouse.glb', import.meta.url)
 const whaleUrl = new URL('./assets/whale.glb', import.meta.url)
 const airplaneUrl = new URL('./assets/airplane.glb', import.meta.url)
 
-const renderer = new THREE.WebGL1Renderer({
+const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#bg'),
 });
 
@@ -48,41 +49,23 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera);
 
-//mouse and raycasting
-const mouse = new THREE.Vector2();
-const raycaster = new THREE.Raycaster();
-
-function onMouseMove( event ) {
-
-	// calculate pointer position in normalized device coordinates
-	// (-1 to +1) for both components
-
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+window.addEventListener( 'mousemove',(event) => {
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-}
-
-function onClick(event) {
-    raycaster.setFromCamera(mouse, camera);
-    let intersects = raycaster.intersectObjects(scene.children);
-    if (intersects.length > 0 && intersects[0].object.userData.name != undefined) {
-        selected = intersects[0].object.userData.name;
-        console.log(selected);
-        console.log('clicked in');
-    }
-    console.log('click!');
-}
-
-window.addEventListener( 'mousemove', onMouseMove);
+    //console.log(mouse);
+});
 window.addEventListener('click', onClick);
 
 const assetLoader = new GLTFLoader();
 
 //loading assets
+var objectlist = [];
+
 var island = new THREE.Object3D;
 assetLoader.load(islandUrl.href, function(gltf) {
     island = gltf.scene;
     scene.add(island);
+    island.name = "island";
     island.userData.clickable = false;
     island.userData.name = "island";
     island.position.set(0, 0, 0);
@@ -96,6 +79,7 @@ assetLoader.load(rocksUrl.href, function(gltf) {
     scene.add(rocks);
     rocks.userData.clickable = false;
     rocks.userData.name = "rocks";
+    rocks.name = "rocks";
     rocks.position.set(0, 0, 0);
     gsap.to( rocks.position, {
         duration: 2,
@@ -114,7 +98,7 @@ assetLoader.load(treehouseUrl.href, function(gltf) {
     scene.add(treehouse);
     treehouse.userData.clickable = true;
     treehouse.userData.name = "treehouse";
-    treehouse.position.set(0, 0, 0);
+    treehouse.name = "treehouse";
 }, undefined, function(error) {
     console.error(error);
 });
@@ -126,6 +110,8 @@ assetLoader.load(whaleUrl.href, function(gltf) {
     scene.add(whale);
     whale.userData.clickable = true;
     whale.userData.name = "whale";
+    whale.name = "whale";
+    //objectlist.push(whale);
     whale.position.set(0, 0, 0);
     whalemixer = new THREE.AnimationMixer(whale);
     const clips = gltf.animations;
@@ -141,13 +127,79 @@ var airplane;
 assetLoader.load(airplaneUrl.href, function(gltf) {
     airplane = gltf.scene;
     scene.add(airplane);
+    //objectlist.push(airplane);
     airplane.userData.clickable = true;
     airplane.userData.name = "airplane";
+    airplane.name = "airplane";
     airplane.position.set(0, 0, 0);
 }, undefined, function(error) {
     console.error(error);
 });
 
+//mouse and raycasting
+const mouse = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
+
+//test raycast
+var testgeo = new THREE.BoxGeometry(5, 5, 5);
+var testmat = new THREE.MeshStandardMaterial({side: THREE.BackSide});
+var testobj = new THREE.Mesh(testgeo, testmat);
+testobj.position.set(5,5,5);
+testobj.name = "testbox";
+//scene.add(testobj);
+
+function onClick(event) {
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObjects(scene.children);
+    console.log(scene.children);
+
+    if (intersects.length > 1 && intersects[0].object.name != undefined) {
+        let selected = intersects[0].object.name;
+        alert(selected);
+        //switch statement with links
+        switch(selected) {
+            case "Whale": 
+                window.open("https://open.spotify.com/user/32yl40xhp98r8uziid81m33xo?si=86f01a2452a14632");
+                break;
+
+        }
+    }
+    /*
+    for (var i in scene.children) {
+        if (scene.children[i] instanceof THREE.Group) {
+          intersects.push(...raycaster.intersectObjects(scene.children[i].children, true));
+        } else if (scene.children[i] instanceof THREE.Mesh) {
+          intersects.push(raycaster.intersectObject(scene.children[i]));
+        }
+      }*/
+    /*
+    let intersects = [];
+    raycaster.intersectObjects(scene.children, true, intersects);
+    console.log(intersects);
+
+    if (intersects.length > 0) {
+        var selected = intersects[0].object.userData.name;
+        console.log(selected);
+        console.log('clicked in');
+    }*/
+
+    /*
+    let intersects = raycaster.intersectObjects(scene.children, true);
+
+    if (intersects.length > 0) {
+        console.log("clicked in");
+        var selected = intersects[0].object;
+        console.log(selected);
+        if (selected.userData.name) {
+            console.log(selected.userData.name);
+        }
+    }
+    */
+    console.log(intersects);
+    console.log(intersects.length);
+    console.log('click!');
+}
 
 //lights
 const sun = new THREE.DirectionalLight(0xffffff)
@@ -167,6 +219,8 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 controls.maxDistance = 100;
 controls.minDistance = 6;
+controls.enableDamping = true;
+controls.enablePan = false;
 
 const clock = new THREE.Clock();
 function animate() {
