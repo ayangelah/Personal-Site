@@ -215,7 +215,7 @@ function onClick(event) {
     raycaster.setFromCamera(mouse, camera);
 
     const intersects = raycaster.intersectObjects(scene.children);
-    console.log(scene.children);
+    //console.log(scene.children);
 
     if (intersects.length > 1 && intersects[0].object.name != undefined) {
         let selected = intersects[0].object.name;
@@ -238,7 +238,7 @@ function onClick(event) {
             case "Plane011_12":
             case "Plane011_13":
             case "Plane011_14":
-                window.open("http://ayangelah.me/attachments/Resume%207_7_23.pdf");
+                window.open("http://ayangelah.me/attachments/Resume 7_21_23.pdf");
                 break;
             //1: research
             case "Cube015":
@@ -255,13 +255,13 @@ function onClick(event) {
                 window.open("http://ayangelah.me/research.html");
                 break;
             //2: art
-            case "Cube014":
-            case "Cube014_1":
-            case "Cube014_2":
-            case "Cube014_3":
-            case "Cube014_4":
-            case "Cube014_5":
-            case "Cube014_6":
+            case "art":
+            case "art_1":
+            case "art_2":
+            case "art_3":
+            case "art_4":
+            case "art_5":
+            case "art_6":
                 window.open("https://www.artpal.com/jackelope");
                 break;
             //3: socials
@@ -281,9 +281,9 @@ function onClick(event) {
             case "Mailbox":
                 window.open("mailto:ayangelah@gmail.com");
             //5: devpost/hackathons
-            case "Torus001":
-            case "Torus001_1":
-                window.open("https://devpost.com/ayang007?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav");
+            case "lightbulb":
+            case "lightbulb_1":
+                window.open("https://devpost.com/ayangelah?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav");
                 break;
             //6: gamedev
 
@@ -298,39 +298,9 @@ function onClick(event) {
         }
     }
     /*
-    for (var i in scene.children) {
-        if (scene.children[i] instanceof THREE.Group) {
-          intersects.push(...raycaster.intersectObjects(scene.children[i].children, true));
-        } else if (scene.children[i] instanceof THREE.Mesh) {
-          intersects.push(raycaster.intersectObject(scene.children[i]));
-        }
-      }*/
-    /*
-    let intersects = [];
-    raycaster.intersectObjects(scene.children, true, intersects);
-    console.log(intersects);
-
-    if (intersects.length > 0) {
-        var selected = intersects[0].object.userData.name;
-        console.log(selected);
-        console.log('clicked in');
-    }*/
-
-    /*
-    let intersects = raycaster.intersectObjects(scene.children, true);
-
-    if (intersects.length > 0) {
-        console.log("clicked in");
-        var selected = intersects[0].object;
-        console.log(selected);
-        if (selected.userData.name) {
-            console.log(selected.userData.name);
-        }
-    }
-    */
     console.log(intersects);
     console.log(intersects.length);
-    console.log('click!');
+    console.log('click!');*/
 }
 
 //lights
@@ -341,11 +311,11 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 
 scene.add(sun, ambientLight)
 
-//helper
-const lightHelper = new THREE.PointLightHelper(sun)
+//helpers
+//const lightHelper = new THREE.PointLightHelper(sun)
 //const gridHelper = new THREE.GridHelper(200, 50);
 
-scene.add(lightHelper)
+//scene.add(lightHelper)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -354,6 +324,7 @@ controls.minDistance = 6;
 controls.enableDamping = true;
 controls.enablePan = false;
 controls.autoRotate = true;
+controls.autoRotateSpeed = 1;
 
 const clock = new THREE.Clock();
 function animate() {
@@ -371,7 +342,6 @@ function animate() {
         clouds.rotateY(0.008);
     }
     controls.update();
-    //clickMesh();
     renderer.render( scene, camera);
 }
 
