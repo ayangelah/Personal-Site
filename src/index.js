@@ -63,6 +63,17 @@ window.addEventListener( 'mousemove',(event) => {
 });
 window.addEventListener('click', onClick);
 
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
 const assetLoader = new GLTFLoader();
 
 //loading assets
@@ -324,7 +335,7 @@ controls.minDistance = 6;
 controls.enableDamping = true;
 controls.enablePan = false;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 1;
+controls.autoRotateSpeed = 0.5;
 
 const clock = new THREE.Clock();
 function animate() {
@@ -339,7 +350,7 @@ function animate() {
         airplane.rotateY(-0.007);
     }
     if (clouds) {
-        clouds.rotateY(0.008);
+        clouds.rotateY(0.002);
     }
     controls.update();
     renderer.render( scene, camera);
