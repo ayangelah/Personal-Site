@@ -56,10 +56,10 @@ camera.position.setZ(15);
 
 renderer.render( scene, camera);
 
-window.addEventListener( 'mousemove',(event) => {
-    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-    //console.log(mouse);
+window.addEventListener( 'pointermove',(event) => {
+    pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    //console.log(pointer);
 });
 window.addEventListener('click', onClick);
 
@@ -222,8 +222,8 @@ assetLoader.load(airplaneUrl.href, function(gltf) {
     console.error(error);
 });
 
-//mouse and raycasting
-const mouse = new THREE.Vector2();
+//pointer and raycasting
+const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
 
 //test raycast
@@ -235,7 +235,7 @@ testobj.name = "testbox";
 //scene.add(testobj);
 
 function onClick(event) {
-    raycaster.setFromCamera(mouse, camera);
+    raycaster.setFromCamera(pointer, camera);
 
     const intersects = raycaster.intersectObjects(scene.children);
     //console.log(scene.children);
