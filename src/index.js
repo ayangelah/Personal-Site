@@ -74,7 +74,19 @@ function onWindowResize(){
 
 }
 
-const assetLoader = new GLTFLoader();
+const loadingManager = new THREE.LoadingManager();
+
+const progressBar = document.getElementById('progress-bar');
+
+loadingManager.onProgress = function(url, loaded, total) {
+    progressBar.value = (loaded / total) * 100;
+}
+const progressBarContainer = document.querySelector('.progress-bar-container');
+loadingManager.onLoad = function() {
+    progressBarContainer.style.display = 'none';
+}
+
+const assetLoader = new GLTFLoader(loadingManager);
 
 //loading assets
 
