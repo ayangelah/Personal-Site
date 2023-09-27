@@ -25,6 +25,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: 11;
       }
       #progress-bar {
         width: 50%;
@@ -37,6 +38,62 @@
         font-family: monospace;
         font-size: 4rem;
       }
+
+      .namepanel {
+        color: rgb(255, 255, 255);
+        width: 30%;
+        border-radius: 15px;
+        padding: 15px;
+        margin: 15px;
+        font-family:'Courier New', Courier, monospace;
+        position: absolute;
+        font-size: 50px;
+        overflow: scroll;
+        z-index: 10;
+        overflow: hidden;
+        text-shadow: 2px 2px 4px pink;
+      }
+
+      .menu {
+        position: absolute;
+        right: 5%;
+        width: 30%;
+        height: 80%;
+        padding: 15px;
+        margin: 15px;
+        font-family:'Courier New', Courier, monospace;
+      }
+
+      .menu ul {
+        list-style: none;
+      }
+
+      .menuitem {
+        background-color: white;
+        box-shadow: 4px 4px 8px pink;
+        width: 80%;
+        height: 10%;
+        padding: 15px;
+        margin: 30px;
+        border-radius: 30px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: transparent;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .menuitem a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .menuitem:hover {
+        background-color: black;
+        color: white;
+        border-color: white;
+      }
     </style>
   </head>
   <body>
@@ -44,7 +101,39 @@
         <label for="progress-bar">Loading...</label>
         <progress id="progress-bar" value="0" max="100"></progress>
     </div>
+    <div class="namepanel">
+      <p><span>Hi There, I'm <b>Angela Yang</b></span></p>
+    </div>
+    <div class="menu">
+      <ul>
+        <li>
+          <div class="menuitem">About</div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="attachments/Resume 7_21_23.pdf" target="_blank" title="resume">Resume</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">Code Portfolio</div>
+        </li>
+        <li>
+          <div class="menuitem">Research</div>
+        </li>
+        <li>
+          <div class="menuitem">Socials</div>
+        </li>
+        <li>
+          <div class="menuitem">Blog</div>
+        </li>
+        <li>
+          <div class="menuitem">Contact Me</div>
+        </li>
+      </ul>
+    </div>
     <canvas id="bg"></canvas>
+    <div class="aboutme">
+    </div>
     <script type="module" src="./dist/assets/index-90914e5d.js"></script>
   </body>
 </html>
