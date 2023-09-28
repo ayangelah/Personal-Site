@@ -10,8 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Angela Yang</title>
     <style>
+      html {
+        scroll-behavior: smooth;
+        /*overflow-x: clip;*/
+      }
       body {
         margin: 0;
+        overscroll-behavior: none;
       }
       .progress-bar-container {
         position: absolute;
@@ -25,6 +30,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: 11;
       }
       #progress-bar {
         width: 50%;
@@ -32,13 +38,174 @@
         height: 6%;
         accent-color: rgba(217,215,193,255);
       }
-      label {
+      .progress-bar-container label {
         color: white;
         font-family: monospace;
         font-size: 4rem;
       }
+
+      .namepanel {
+        color: rgb(255, 255, 255);
+        width: 30%;
+        border-radius: 15px;
+        padding: 15px;
+        margin: 15px;
+        font-family:'Courier New', Courier, monospace;
+        position: absolute;
+        font-size: 50px;
+        overflow: scroll;
+        z-index: 10;
+        overflow: hidden;
+        text-shadow: 2px 2px 4px pink;
+      }
+
+      .menu {
+        position: absolute;
+        right: 5%;
+        width: 30%;
+        height: 80%;
+        padding: 15px;
+        margin: 15px;
+        font-family:'Courier New', Courier, monospace;
+        z-index: 10;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      .menuitem {
+        background-color: white;
+        box-shadow: 4px 4px 8px pink;
+        width: 80%;
+        height: 10%;
+        padding: 15px;
+        margin: 30px;
+        border-radius: 30px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: transparent;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      .menuitem a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .menuitem:hover {
+        background-color: black;
+        color: white;
+        border-color: white;
+      }
+
+      #aboutme {
+        
+      }
+
+      #socials {
+        width: fit-content;
+        overflow-wrap: break-word;
+      }
+
+      #contactme form{
+        padding-left: 40px;
+      }
+
+      #codeportfolio {
+        width: 90%;
+      }
+
+      #codeportfolio ul li {
+        padding: 15px;
+        margin: 15px;
+      }
+
+      .textsection {
+        color: antiquewhite;
+        line-height: 30px;
+        width: 50%;
+        padding: 15px;
+        margin: 15px;
+        font-family: 'Courier New', Courier, monospace;
+        display: block;
+      }
+
+      .textcontainer {
+        width: 100%;
+      }
+
+      .minimenu li {
+        position: static;
+        display: inline-flex;
+        width: 30%;
+      }
+
+      .minimenu {
+        width: 100%;
+        align-items: center;
+      }
+
+      .embeddedvideo {
+        height: 300px;
+        border-radius: 10px;
+      }
+
+      .portfoliolink {
+        display: inline-block;
+        color: blanchedalmond;
+      }
+
+      .portfoliolink:visited .portfoliolink:active .portfoliolink:hover{
+        color: blanchedalmond;
+      }
+
+      main {
+        position: absolute;
+        top: 400px;
+        padding-top: 300px;
+        overflow: hidden;
+        margin: 0;
+        overscroll-behavior: none;
+        background: linear-gradient(180deg, rgba(0,0,0,0), #ed5d0f, #ed5d0f, #c81b26, #9b0f5f, #600479, #160a47, #0b032b);
+      }
+
+      .bottomcanvas {
+        height: 300vh;
+        background-color: aqua;
+      }
+
+      .topcanvas {
+        -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%);
+        mask-image: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 15%);
+      }
+
+      hr {
+        height: 1px;
+        background-color: rgba(255, 235, 205, 0.57);
+        border: none;
+      }
+
+      #submitbutton {
+        border-radius: 5px; 
+        padding: 5px; 
+        border-style: none; 
+        background-color: #600479; 
+        color:antiquewhite; 
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      #submitbutton:hover {
+        background-color: #c81b26;
+      }
+
+      #submitbutton:focus {
+        background-color: #9b0f5f;
+      }
     </style>
-    <script type="module" crossorigin src="/assets/index-90914e5d.js"></script>
+    <script type="module" crossorigin src="/assets/index-fc9c9a3d.js"></script>
     <link rel="stylesheet" href="/assets/index-ca4c7e66.css">
   </head>
   <body>
@@ -46,7 +213,234 @@
         <label for="progress-bar">Loading...</label>
         <progress id="progress-bar" value="0" max="100"></progress>
     </div>
-    <canvas id="bg"></canvas>
+    <div class="namepanel">
+      <p><span>Hi There, I'm <b>Angela Yang</b></span></p>
+    </div>
+    <div class="menu">
+      <ul>
+        <li>
+          <div class="menuitem">
+            <a href="#aboutme" title="about">About</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="attachments/Resume 7_21_23.pdf" target="_blank" title="resume">Resume</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="#codeportfolio" title="code portfolio">Code Portfolio</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="./research.html" target="_blank" title="research">Research</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="#socials" title="socials">Socials</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="./blog.html" target="_blank" title="blog">Blog</a>
+          </div>
+        </li>
+        <li>
+          <div class="menuitem">
+            <a href="#contactme" title="about">Contact Me</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <canvas class="topcanvas" id="bg"></canvas>
+    <main>
+      <div class="textcontainer">
+        <div class="textsection" id="aboutme">
+          <h1>About Me</h1>
+          <p>Hello, I'm Angela, a dedicated computer science and linguistics major at UCLA. 
+            My academic journey has been a fascinating blend of technology and language, both 
+            natural and engineered. Beyond my academic pursuits, I'm a versatile 
+            individual with a passion for creativity. In my free time, you'll often find me 
+            engrossed in artistic pursuits, such as drawing and crafting poetry; both of which 
+            you may discover if you linger on this site :&#41;. I'm passionate about harnessing 
+            natural language processing to make technology more human-centric and accessible, 
+            paving the way for a future where machines understand and communicate with us in ways 
+            that empathize with users.</p>
+        </div>
+      </div>
+      <div class="menu" style="position: relative; width: 100%; display: inline-block;">
+        <ul class="minimenu">
+          <li>
+            <div class="menuitem loneresumebutton">
+              <a href="attachments/Resume 7_21_23.pdf" target="_blank" title="resume">Resume</a>
+            </div>
+          </li>
+          <li>
+            <div class="menuitem loneresumebutton">
+              <a href="./research.html" target="_blank" title="resume">Research</a>
+            </div>
+          </li>
+          <li>
+            <div class="menuitem loneresumebutton">
+              <a href="./blog.html" target="_blank" title="resume">Blog</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="textcontainer">
+        <div class="textsection" id="codeportfolio">
+          <h1>Code Portfolio</h1>
+          <ul>
+            <li>
+              <label><b>DoctorAMA</b></label>
+              <i name="date">1/28/23 to 1/29/23</i>
+              <p name="description">Dr. AMA is a web-based medical chat app created to fight discrimination against 
+                the LGBTQ+ community. Dr. AMA allows users to create their own profile that fits with their social identity
+                and medical needs while providing anonymity and safeguarding against bias. This is accomplished through 
+                a customizable avatar option and the freedom to choose the questions to answer and share on the health 
+                profile checklist that are more aligned with users' medical needs. Additionally, users have the option 
+                to choose which physician they would like to be treated by from Dr. AMA's diverse and inclusive registry 
+                of inclusivity-trained medical professionals, easing patients', especially those belonging to minority 
+                groups, comfort around physicians and ultimately improving patient-physician interactions. Once a 
+                physician has been selected, patients may chat and engage with the doctor without fear of discrimination.
+                This project was an entry and second place winner in the QWER Hacks hackathon's health category.</p>
+              <img class="embeddedvideo" name="images" src="/assets/FrontPageDoctorAMA-e28c8859.png">
+            </li>
+            <hr>
+            <li>
+              <label><b>RoadRager</b></label>
+              <i name="date">3/5/23</i>
+              <p name="description">We wanted to see if we could use machine learning to teach the general populace, 
+                especially in a city as traffic-prone as LA, good driving habits and attitudes to prevent road rage 
+                incidents. RoadRager is a 2D-style game that allows the user to control a vehicle in a fictional universe. 
+                There is a car in front of the vehicle, and they must be cautious not to be too aggressive a driver, 
+                especially when weather and road conditions constantly change. The driver is rated by a slider that informs 
+                the user how aggressively they are driving. The driving data is uploaded to a Google Cloud endpoint, 
+                where it is analyzed against machine learning model of our own design, trained on real-world driving data. 
+                The user must drive cautiously in order not to be rated as aggressive. We hope this will build good driving habits.
+                This project was an entry and the first place winner of Best Game in the HOTHX hackathon at UCLA.
+                </p>
+              <img name="images">
+              <video class="embeddedvideo" controls autoplay muted loop><source src="/assets/RoadRagerDemo-9ca8813c.mp4"></video>
+              <a class="portfoliolink" href="https://www.youtube.com/watch?v=-fCjPJWbS28">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>MoonStruck</b></label>
+              <i name="date">4/21/23 to 4/23/23</i>
+              <p name="description">Moon-Struck is a web application that enables couples who are in a long-distance relationship
+                 to stay in touch with each other and allows them to keep an active role in each others' everyday lives. Moon-Struck
+                  is focused on the “Home Away from Home” track, which is best showcased through a user's ability to see their 
+                  partner's real-time weather updates, location, timezone information, and post-it notes. Through these windows into 
+                  your loved ones' life, as well as quality-of-life features such as a menstrual calendar and a countdown to your 
+                  reunion, Moonstruck allows people to feel as if they were with their partners in real life. Moon-Struck was built 
+                  in the MERN software stack; specifically, we used MongoDB with Mongoose, Express, React, and NodeJS. This project 
+                  was an entry in the 2023 LA Hacks hackathon.</p>
+              <img name="images">
+              <video class="embeddedvideo" controls autoplay muted loop><source src="/assets/LA_Hacks_2023_Submission_-_Moon_Struck-665cd53f.mp4"></video>
+              <a class="portfoliolink" href="https://youtu.be/yq5UsSyhn5g">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>Health Monitoring Mobile App</b></label>
+              <i name="date">2/8/22 to 12/10/22</i>
+              <p name="description">
+                This project was a React Native mobile app commissioned by Dr. Edmund Tsui, a pediatrician at the Geffen Medical Center. It's intended 
+                use is as a self-monitoring symptom diary for his patients with juvenile idiopathic arthritis. I further developed on an 
+                existing static site and implemented authentication and registration capabilities.
+              </p>
+              <img name="images">
+              <video class="embeddedvideo" controls autoplay muted loop><source src="/assets/jiaapp-524df395.mp4"></video>
+            </li>
+            <hr>
+            <li>
+              <label><b>Infant Speech App</b></label>
+              <i name="date">4/6/23 to 9/30/23</i>
+              <p name="description">The Infant Speech App is a research software tool used to organize and search for phonetically-significant 
+                segments in large Pratt audio files. Phonetics research is expedited with this tool, as trends and patterns can be statistically 
+                gleaned from larger data sets. This was tested and optimized on a large Spanish database of infant speech, and currently being 
+                expanded to accomodate a more extensive English audio archive as well as mapped onto visual representations. This app was a 
+                commission project by the <a class="portfoliolink" href="https://languagelab.humanities.ucla.edu/en/" target="_blank">UCLA 
+                Language Acquisition Lab</a>. It was built using Shiny R Studio.</p>
+              <img name="images">
+              <video class="embeddedvideo" controls autoplay muted loop><source src="/assets/infantappbarebones-2411a274.mov"></video>
+              <a class="portfoliolink" href="https://www.youtube.com/watch?v=SLScxv6ATRU">Full Video</a>
+              <video class="embeddedvideo" controls autoplay muted loop><source src="/assets/infantapppolished-f52f8bef.mov"></video>
+              <a class="portfoliolink" href="https://www.youtube.com/watch?v=gHTRUgPDHUI">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>FloraFauna</b></label>
+              <i name="date">3/5/23</i>
+              <p name="description">
+                FloraFauna is a web-based application used to keep track of local flora and fauna species within a given geographic area.
+                We built FloraFauna to provide an easily accessible, crowdsourced wildlife population database and tracking software for 
+                researchers and hobbyists alike. Users post and interact with sightings (pictures) of flora and fauna. FloraFauna was a 
+                group term-project for the Software Construction course at UCLA.
+              </p>
+              <img class="embeddedvideo" src="/assets/florafauna1-724fd39d.png" name="images">
+              <img class="embeddedvideo" src="/assets/florafauna2-4a1b2f98.png" name="images">
+              <img class="embeddedvideo" src="/assets/florafauna3-8c463eb2.png" name="images">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="textcontainer">
+        <div class="textsection" id="socials">
+          <h1>Socials</h1>
+          <ul>
+            <li><b>LinkedIn: </b>https://www.linkedin.com/in/ayangelah</li>
+            <li><b>Github: </b>https://github.com/ayangelah</li>
+            <li><b>Devpost: </b>https://devpost.com/ayangelah</li>
+            <li><b>Discord: </b>seasponge</li>
+          </ul>
+        </div>
+      </div>
+      <div class="textcontainer">
+        <div class="textsection" id="contactme">
+          <h1>Contact Me</h1>
+          <form
+                action="https://formsubmit.co/ayangelah@gmail.com"
+                method="POST"
+              >
+                <div class="formtext">
+                  <label class="form-label">Full Name</label>
+                  <input name="name" type="text" class="form-control" required />
+                </div>
+
+                <div class="formtext">
+                  <label class="form-label">Email address</label>
+                  <input name="email" type="email" class="form-control" required />
+                  <div id="emailHelp" class="form-text">
+                    Don't worry, we won't share it with anyone else.
+                  </div>
+                </div>
+
+                <div class="formtext">
+                  <label class="form-label">Phone (optional)</label>
+                  <input name="phone" \type="tel" class="form-control" />
+                  <div id="phoneHelp" class="form-text">
+                    If you rather talk to a human directly.
+                  </div>
+                </div>
+
+                <div class="formtext">
+                  <label class="form-label">Your Message</label>
+                  <textarea
+                    name="message"
+                    class="form-control"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" id="submitbutton" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+      </div>
+    </main>
     
   </body>
 </html>

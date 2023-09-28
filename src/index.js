@@ -59,6 +59,11 @@ renderer.render( scene, camera);
 window.addEventListener( 'pointermove',(event) => {
     pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    var vector = new THREE.Vector3(pointer.x, pointer.y, 0.5);
+    vector.unproject(camera2);
+    var dir = vector.sub(camera.position).normalize();
+    var distance = -camera2.position.z / dir.z;
+    var pos = camera2.position.clone().add(dir.multiplyScalar(distance));
     //console.log(pointer);
 });
 window.addEventListener('click', onClick);
@@ -346,6 +351,7 @@ controls.maxDistance = 100;
 controls.minDistance = 6;
 controls.enableDamping = true;
 controls.enablePan = false;
+controls.enableZoom = false;
 controls.autoRotate = true;
 controls.autoRotateSpeed = 0.5;
 
@@ -369,3 +375,61 @@ function animate() {
 }
 
 animate()
+
+//second scene
+
+const scene2 = new THREE.Scene()
+
+const camera2 = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+const renderer2 = new THREE.WebGLRenderer({
+    canvas: document.querySelector('#bg2'),
+});
+
+renderer2.setPixelRatio(window.devicePixelRatio);
+renderer2.setSize(window.innerWidth, window.innerHeight);
+camera2.position.setZ(15);
+
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
+const material = new THREE.MeshStandardMaterial( {color: 0xFF6347} );
+const torus = new THREE.Mesh(geometry, material);
+
+scene2.add(torus)
+
+/*
+var mailbox2 = new THREE.Object3D;
+assetLoader.load(mailboxUrl.href, function(gltf) {
+    mailbox2 = gltf.scene;
+    scene2.add(mailbox2);
+    mailbox2.position.set(0,0,30);
+    mailbox2.name = "mailbox2";
+}, undefined, function(error) {
+    console.error(error);
+});
+
+var socials2 = new THREE.Object3D;
+assetLoader.load(socialsUrl.href, function(gltf) {
+    socials2 = gltf.scene;
+    scene2.add(socials2);
+    socials2.position.set(0,0,0);
+    socials2.name = "socials2";
+}, undefined, function(error) {
+    console.error(error);
+});
+*/
+
+//lights
+const mouselight = new THREE.PointLight(0xffffff)
+mouselight.position.set(5,50,10)
+
+const ambientLight2 = new THREE.AmbientLight(0xffffff);
+
+scene2.add(mouselight, ambientLight2);
+
+function animate2() {
+    requestAnimationFrame(animate);
+    renderer2.render( scene2, camera2);
+}
+
+animate2()
+
