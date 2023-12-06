@@ -256,6 +256,33 @@
         background-color: #9b0f5f;
       }
 
+      /* Tooltip container */
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 10px dotted pink; /* If you want dots under the hoverable text */
+      }
+
+      /* Tooltip text */
+      .namepanel .tooltip .tooltiptext {
+        visibility: hidden;
+        width: fit-content;
+        background-color: darkolivegreen;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        font-size: 2vw;
+      
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+      }
+
+      /* Show the tooltip text when you mouse over the tooltip container */
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+      }
 
       @media screen and (max-width: 768px) {
         .namepanel {
@@ -306,6 +333,7 @@
           width: 100vw;
         }
       }
+  
     </style>
   </head>
   <body>
@@ -314,7 +342,15 @@
         <progress id="progress-bar" value="0" max="100"></progress>
     </div>
     <div class="namepanel">
-      <p><span><b>Angela Yang</b><br>CS + Ling @ UCLA</span></p>
+      <p><span>
+        <b>Angela Yang</b>
+        <br>
+        <div class="tooltip">CS
+          <span class="tooltiptext">Computer Science</span>
+        </div> + 
+        <div class="tooltip">Ling
+          <span class="tooltiptext">Linguistics</span>
+        </div> @ UCLA</span></p>
     </div>
       <ul class="menu">
         <li>
