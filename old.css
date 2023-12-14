@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
@@ -260,12 +260,11 @@ body.dark {
 }
 
 .researchcontent {
-     overflow: visible;
+    overflow: visible;
 }
 
-.reflectionlist {
-    align-items: center;
-    justify-content: space-around;
+.reflectionlist li div {
+    display: flexbox;
 }
 
 .posttitle {

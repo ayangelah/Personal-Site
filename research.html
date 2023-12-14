@@ -22,7 +22,7 @@
                 <p class="posttitle">Natural Language is Not Context-Free: 
                     A Comparison Between Linear-Indexed Grammars (LIGs) and Tree-Adjoining Grammars (TAGs)
                 </p>
-                <p class="date"><i>6/24/2023</i></p>
+                <p class="date"><i>12/14/2023</i></p>
                 <p class="time"><i>~15 minutes</i></p>
                 <p class="content">
                     This is the final project for the Computational Linguistics I class, on the mildly context sensitive 
@@ -63,6 +63,20 @@
         </li>
         <li>
             <div class="post">
+                <p class="posttitle">Comparison Analysis on Rust and C Through the Lens of GNU grep Implementation
+                </p>
+                <p class="date"><i>3/17/2023</i></p>
+                <p class="time"><i>~5 minutes</i></p>
+                <p class="content">
+                    This is the final paper for my Programming Languages class, on the improvements that Rust has 
+                    attempted to make on C++ through the topic of grep.
+                    <a href="attachments/Comparison Analysis on Rust and C Through the Lens of GNU grep Implementation.pdf">Click Here to View In Browser</a>
+                    <iframe src="attachments/Comparison Analysis on Rust and C Through the Lens of GNU grep Implementation.pdf" width="100%" height="500px"></iframe>
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="post">
                 <p class="posttitle">The Effects of Citric Acid on Contraction of Mouse Cardiomyocytes</p>
                 <p class="date"><i>this paper was written 8/12/2019, reflection was written 11/15/2022</i></p>
                 <p class="time"><i>~5 minutes</i></p>
@@ -77,75 +91,68 @@
                     Here is my reflection after three years:
                     <br>
                     <br>
-                    <ol class="reflectionlist">
-                        <li>
-                            1. <b>The Energy Problem:</b> 
-                            <br>
-                            <i>Context and Approaches:</i> The main issue with the sustained contraction of heart cells is that like most 
-                            cell activities, contraction of the actin and myosin filaments in a cardiomyocyte required energy in the form 
-                            of ATP or a similar nucleotide triphosphate. The issue was that being a short-term energy storage molecule, ATP 
-                            tends to be unstable, and thus difficult to synthesize and costly to purchase. Direct addition of ATP salts was 
-                            off the table for this reason. An alternative solution was offering glucose directly to the cell buffer for cells 
-                            to uptake. However, this also runs into the issue of glucose uptake requiring insulin to cross cell membranes. 
-                            This also why diabetes treatment required more than just sugar regulation. Insulin was less costly than ATP salts 
-                            but also beyond my project budget and timeline. This is where my final (and flawed) solution came in. I sought to 
-                            hijack the ATP production pipeline by providing an intermediate in the buffer so the cell could pick up from the 
-                            middle of the cellular respiration process and create its own ATP without requiring insulin.
-                            <br>
-                            <br>
-                            <i>What was wrong with it?:</i> Firstly, just as glucose&#8212;a large molecule by the standards of 
-                            the lipid bilayer&#8212;requires a insulin ligand-gated transporter, many other molecules used by the
-                            cellular respiration pipeline likewise need special transporters. I should've researched this more thoroughly
-                            before choosing my intermediate at the very least. Moreover, glucose only requires transport across the cell
-                            membrane as it begins the cycle of glycolysis which occurs in the cytoplasm. It is immediately converted to a
-                            geometric isomer, fructose, which is unable to cross the cell membrane completely. This maintains a favorable 
-                            passive glucose gradient, and prevents loss of already acquired glucose. In order for glycolysis to function, 
-                            other intermediates before the next stage of cellular respiration must also be membrane impermeable. This changes 
-                            when we reach the Citric Acid Cycle, which occurs within the mitochondria. These intermediates now are unable to
-                            cross the <i>mitochondrial</i> membranes as this would result in a huge loss and inefficiency in the cellular 
-                            respiration process. My issue was actually twofold: figuring out how to hijack the cellular respiration system, 
-                            but also figuring out how to get across respective membranes in order to allow cells to utilize my chosen substrates.
-                        </li>
-                        <li>
-                            2. <b>The False Positive:</b>
-                            <br>
-                            As stated, this experiment was a partial success, as my hypothesis was supported by my results. However, for the
-                            reasons above, this is an impossibility. Instead, what I had was a false positive hypothesis. In fact, the null 
-                            hypothesis of this experiment turned out to be the one better supported. The null hypothesis is the hypothesis that 
-                            there is no correlation between the dependent and independent variables. I ran four experiments: whole mouse heart 
-                            with my citric acid buffer, one without, isolated cardiomyocytes with buffer, and another without. With the whole 
-                            mouse heart, both samples continued contracting with citric acid and without. This supported the null hypothesis. 
-                            However, with isolated myocytes, they only contracted with my buffer. This is what I assumed supported my hypothesis,
-                            but this is an assumption in the face of a clear falsity with whole heart experiments.
-                        </li>
-                        <li>
-                            3. <b>Technical Flaws:</b>
-                            <br>
-                            As with all experiments done in physical wet labs, it is prone to researcher or methodology error. Let's target the one 
-                            likely responsible for the false positive result I got. The isolated cardiomyocytes were beating with my buffer but not 
-                            visibly so without it, whereas both whole hearts beat the same. There could be several reasons for this:
-                            <div>
-                                <ul>
-                                    <li>
-                                        1) Small Sample Size: While I did observe contractions, I only observed a small proportion of cells present 
-                                        contracting. Most weren't contracting in both samples.
-                                    </li>
-                                    <li>
-                                        2) Centrifugal Damage: In order to isolate the cardiomyocytes from the rest of the mouse heart tissue, I ran the
-                                        tissue through the centrifuge with a cell-separating buffer. This was quite destructive, observably so, as many of 
-                                        those noncontractile cells were shriveled from the physical force. This could've also caused unforseen results such 
-                                        as damaging the cell membrane to increase permeability and allow the buffer to actually take effect when it normally 
-                                        wouldn't have.
-                                    </li>
-                                    <li>
-                                        3) Incomplete Perfusing: On the flip side, the whole heart could've not expressed the hypothetical results as the perfusal 
-                                        of the heart by the Langendorf apparatus may not have been sufficient as pressure in the smaller coronaries could've meant 
-                                        buffer was more likely to flow out of the aorta on the outside of the heart rather than through its vasculature.
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ol>
+                    <div>
+                        1. <b>The Energy Problem:</b> 
+                        <br>
+                        <i>Context and Approaches:</i> The main issue with the sustained contraction of heart cells is that like most 
+                        cell activities, contraction of the actin and myosin filaments in a cardiomyocyte required energy in the form 
+                        of ATP or a similar nucleotide triphosphate. The issue was that being a short-term energy storage molecule, ATP 
+                        tends to be unstable, and thus difficult to synthesize and costly to purchase. Direct addition of ATP salts was 
+                        off the table for this reason. An alternative solution was offering glucose directly to the cell buffer for cells 
+                        to uptake. However, this also runs into the issue of glucose uptake requiring insulin to cross cell membranes. 
+                        This also why diabetes treatment required more than just sugar regulation. Insulin was less costly than ATP salts 
+                        but also beyond my project budget and timeline. This is where my final (and flawed) solution came in. I sought to 
+                        hijack the ATP production pipeline by providing an intermediate in the buffer so the cell could pick up from the 
+                        middle of the cellular respiration process and create its own ATP without requiring insulin.
+                        <br>
+                        <br>
+                        <i>What was wrong with it?:</i> Firstly, just as glucose&#8212;a large molecule by the standards of 
+                        the lipid bilayer&#8212;requires a insulin ligand-gated transporter, many other molecules used by the
+                        cellular respiration pipeline likewise need special transporters. I should've researched this more thoroughly
+                        before choosing my intermediate at the very least. Moreover, glucose only requires transport across the cell
+                        membrane as it begins the cycle of glycolysis which occurs in the cytoplasm. It is immediately converted to a
+                        geometric isomer, fructose, which is unable to cross the cell membrane completely. This maintains a favorable 
+                        passive glucose gradient, and prevents loss of already acquired glucose. In order for glycolysis to function, 
+                        other intermediates before the next stage of cellular respiration must also be membrane impermeable. This changes 
+                        when we reach the Citric Acid Cycle, which occurs within the mitochondria. These intermediates now are unable to
+                        cross the <i>mitochondrial</i> membranes as this would result in a huge loss and inefficiency in the cellular 
+                        respiration process. My issue was actually twofold: figuring out how to hijack the cellular respiration system, 
+                        but also figuring out how to get across respective membranes in order to allow cells to utilize my chosen substrates.
+                    </div>
+                    <br>
+                    <div>
+                        2. <b>The False Positive:</b>
+                        <br>
+                        As stated, this experiment was a partial success, as my hypothesis was supported by my results. However, for the
+                        reasons above, this is an impossibility. Instead, what I had was a false positive hypothesis. In fact, the null 
+                        hypothesis of this experiment turned out to be the one better supported. The null hypothesis is the hypothesis that 
+                        there is no correlation between the dependent and independent variables. I ran four experiments: whole mouse heart 
+                        with my citric acid buffer, one without, isolated cardiomyocytes with buffer, and another without. With the whole 
+                        mouse heart, both samples continued contracting with citric acid and without. This supported the null hypothesis. 
+                        However, with isolated myocytes, they only contracted with my buffer. This is what I assumed supported my hypothesis,
+                        but this is an assumption in the face of a clear falsity with whole heart experiments.
+                    </div>
+                    <br>
+                    <div>
+                        3. <b>Technical Flaws:</b>
+                        <br>
+                        As with all experiments done in physical wet labs, it is prone to researcher or methodology error. Let's target the one 
+                        likely responsible for the false positive result I got. The isolated cardiomyocytes were beating with my buffer but not 
+                        visibly so without it, whereas both whole hearts beat the same. There could be several reasons for this:
+                        <br><br>
+                            <b>a.</b> Small Sample Size: While I did observe contractions, I only observed a small proportion of cells present 
+                            contracting. Most weren't contracting in both samples.
+                        <br><br>
+                            <b>b.</b> Centrifugal Damage: In order to isolate the cardiomyocytes from the rest of the mouse heart tissue, I ran the
+                            tissue through the centrifuge with a cell-separating buffer. This was quite destructive, observably so, as many of 
+                            those noncontractile cells were shriveled from the physical force. This could've also caused unforseen results such 
+                            as damaging the cell membrane to increase permeability and allow the buffer to actually take effect when it normally 
+                            wouldn't have.
+                        <br><br>
+                            <b>c.</b> Incomplete Perfusing: On the flip side, the whole heart could've not expressed the hypothetical results as the perfusal 
+                            of the heart by the Langendorf apparatus may not have been sufficient as pressure in the smaller coronaries could've meant 
+                            buffer was more likely to flow out of the aorta on the outside of the heart rather than through its vasculature.
+                    </div>
                 </p>
             </div>
         </li>
