@@ -316,12 +316,13 @@ body.dark {
     z-index: -6;
     left: 20vw;
     top: 1.5%;
-    width: 80vw;
+    width: 800px;
 }
 #keyart-2 {
     z-index: -7;
     position: absolute;
     left: 0px;
     top: 25%;
+    width: 700px;
 }
 
