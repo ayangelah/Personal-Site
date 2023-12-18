@@ -267,7 +267,11 @@ body.dark {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 15px;*/
     overflow: scroll;
-    text-shadow: 2px 2px 4px whitesmoke;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .researchcontent {
@@ -284,12 +288,12 @@ body.dark {
 
 .time {
     color: rgb(100, 100, 100);
-    text-shadow: 2px 2px 4px pink;
+    text-shadow: 2px 2px 4px white;
 }
 
 .date {
     color: rgb(100, 100, 100);
-    text-shadow: 2px 2px 4px pink;
+    text-shadow: 2px 2px 4px white;
 }
 
 /*parallax background*/
