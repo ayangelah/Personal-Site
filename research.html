@@ -13,6 +13,12 @@
     </head>
     <div class="home"><a href="index.html"><ion-icon name="home"></ion-icon></a></div>
     <div class="box">
+        <div class="parallax" >
+            <img id="keyart-0" src="./attachments/parallax_foreground.png">
+        </div>
+        <img class="parallax" id="keyart-1" src="./attachments/parallax_background1.png">
+        <img class="parallax" id="keyart-2" src="./attachments/parallax_background2.png">
+        <div>
         <div class="blogheader">
             <p class="blogtitle">Research (Formal and Informal)</p>
             <p class="blogsubtitle">a collection of mini-papers written by Angela Yang<ion-icon name="heart"></ion-icon></p>
@@ -159,7 +165,18 @@
         <li>
             <div class="blogcopyright"><p>copyright 2022 Angela Yang</p></div>
         </li>
+        </div>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        let background1 = document.getElementById('keyart-1');
+        let background2 = document.getElementById('keyart-2');
+        
+        window.addEventListener('scroll', function(){
+            let value = window.scrollY;
+            background1.style.top = (value * 0.015) + 1.5 + '%';
+            background2.style.top = (value * 0.01) + 25 + '%';
+        })
+    </script>
 </html>
