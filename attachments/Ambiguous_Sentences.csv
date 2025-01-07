@@ -1,0 +1,58 @@
+display,randomise_trials,Stimulus Sentence,metadata_type
+Display 1,,,
+Sentence Parsing,1,The analyst reviewed the confidential report before the meeting.,Control
+Sentence Parsing,1,The analyst reviewed the report briefly before the meeting.,MA
+Sentence Parsing,1,"The analyst reviewed the report, which contained sensitive information.",CM
+Sentence Parsing,1,The architect reviewed the designs closely at the meeting.,MA
+Sentence Parsing,1,"The architect reviewed the designs, which featured eco-friendly materials.",CM
+Sentence Parsing,1,The architect reviewed the eco-friendly designs in detail.,Control
+Sentence Parsing,1,The artist completed the portrait capturing the sitter’s smile.,MA
+Sentence Parsing,1,The artist completed the portrait carefully in the studio.,CM
+Sentence Parsing,1,"The artist completed the portrait, which captured the sitter’s unique smile.",Control
+Sentence Parsing,1,The author edited the manuscript quickly in the morning.,MA
+Sentence Parsing,1,The author edited the manuscript to be more readable.,Control
+Sentence Parsing,1,"The author edited the manuscript, which was full of historical references.",CM
+Sentence Parsing,1,The biologist recorded the behavior diligently in the field.,MA
+Sentence Parsing,1,"The biologist recorded the behavior, which suggested new mating rituals.",CM
+Sentence Parsing,1,The biologist recorded the new mating rituals of the species.,Control
+Sentence Parsing,1,The chef presented the dish proudly in the restaurant.,MA
+Sentence Parsing,1,The chef presented the dish spiced with exotic herbs.,Control
+Sentence Parsing,1,"The chef presented the dish, which had a blend of exotic spices.",CM
+Sentence Parsing,1,The coach planned the training routine yesterday at the gym.,MA
+Sentence Parsing,1,"The coach planned the training routine, which focused on endurance.",CM
+Sentence Parsing,1,The counselor discussed the self-improvement strategy openly.,Control
+Sentence Parsing,1,The counselor discussed the strategy openly in the session.,MA
+Sentence Parsing,1,"The counselor discussed the strategy, which focused on self-improvement.",CM
+Sentence Parsing,1,The curator arranged the artifacts carefully in the exhibit.,MA
+Sentence Parsing,1,The curator arranged the artifacts from the Roman era carefully.,Control
+Sentence Parsing,1,"The curator arranged the artifacts, which dated back to the Roman era.",CM
+Sentence Parsing,1,The director scheduled the rehearsal quickly for next week.,MA
+Sentence Parsing,1,"The director scheduled the rehearsal, which involved the entire cast.",CM
+Sentence Parsing,1,The engineer tested the equipment carefully in the workshop.,MA
+Sentence Parsing,1,"The engineer tested the equipment, which was designed for high-altitude use.",CM
+Sentence Parsing,1,The engineer tested the high-altitude equipment thoroughly.,Control
+Sentence Parsing,1,The gardener pruned the bushes yesterday during the storm.,MA
+Sentence Parsing,1,"The gardener pruned the bushes, which had grown too close to the fence.",CM
+Sentence Parsing,1,The judge reviewed the evidence linking multiple suspects.,Control
+Sentence Parsing,1,The judge reviewed the evidence meticulously in chambers.,MA
+Sentence Parsing,1,"The judge reviewed the evidence, which implicated multiple parties.",CM
+Sentence Parsing,1,The mechanic inspected the vehicle thoroughly after the test drive.,MA
+Sentence Parsing,1,The mechanic inspected the vehicle with multiple broken components.,Control
+Sentence Parsing,1,"The mechanic inspected the vehicle, which had several broken components.""",CM
+Sentence Parsing,1,The pilot checked the aircraft before takeoff on the tarmac.,MA
+Sentence Parsing,1,The pilot checked the aircraft with the new engine carefully.,Control
+Sentence Parsing,1,"The pilot checked the aircraft, which had a new engine.",CM
+Sentence Parsing,1,The professor explained the assignment clearly to the class.,MA
+Sentence Parsing,1,"The professor explained the assignment, which is due next week.",Control
+Sentence Parsing,1,"The professor explained the assignment, which was due next week.",CM
+Sentence Parsing,1,The reporter recorded the statement for international broadcast.,Control
+Sentence Parsing,1,The reporter recorded the statement quickly at the press conference.,MA
+Sentence Parsing,1,"The reporter recorded the statement, which was meant for a global audience.",CM
+Sentence Parsing,1,The scientist analyzed the sample carefully after hours in the lab.,MA
+Sentence Parsing,1,The scientist analyzed the sample quickly.,Control
+Sentence Parsing,1,"The scientist analyzed the sample, which came from an active volcano.",CM
+Sentence Parsing,1,The teacher prepared the lesson plan in detail for the class.,MA
+Sentence Parsing,1,"The teacher prepared the lesson plan, which included hands-on activities.",CM
+Sentence Parsing,1,The vet examined the animal rescued from a shelter.,Control
+Sentence Parsing,1,The vet examined the animal with one eye.,MA
+Sentence Parsing,1,"The vet examined the animal, which was recently rescued from a shelter.",CM
