@@ -1,6 +1,6 @@
 import '../style.css';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { OrbitControls } from './OrbitControls';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import { gsap } from "gsap";
 
@@ -240,6 +240,10 @@ testobj.name = "testbox";
 //scene.add(testobj);
 
 function onClick(event) {
+    // Only process 3D clicks when the user actually clicked on the Three.js canvas,
+    // not on HTML content overlaid on top of it or below it when scrolled down.
+    if (event.target.id !== 'bg') return;
+
     raycaster.setFromCamera(pointer, camera);
 
     const intersects = raycaster.intersectObjects(scene.children);
