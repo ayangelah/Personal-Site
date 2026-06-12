@@ -597,29 +597,30 @@
                 method="POST"
               >
                 <div class="formtext">
-                  <label class="form-label">Full Name</label>
-                  <input name="name" type="text" class="form-control" required />
+                  <label class="form-label" for="contact-name">Full Name</label>
+                  <input id="contact-name" name="name" type="text" class="form-control" required />
                 </div>
 
                 <div class="formtext">
-                  <label class="form-label">Email address</label>
-                  <input name="email" type="email" class="form-control" required />
+                  <label class="form-label" for="contact-email">Email address</label>
+                  <input id="contact-email" name="email" type="email" class="form-control" required aria-describedby="emailHelp" />
                   <div id="emailHelp" class="form-text">
                     Don't worry, we won't share it with anyone else.
                   </div>
                 </div>
 
                 <div class="formtext">
-                  <label class="form-label">Phone (optional)</label>
-                  <input name="phone" type="tel" class="form-control" />
+                  <label class="form-label" for="contact-phone">Phone (optional)</label>
+                  <input id="contact-phone" name="phone" type="tel" class="form-control" aria-describedby="phoneHelp" />
                   <div id="phoneHelp" class="form-text">
                     If you rather talk to this human directly.
                   </div>
                 </div>
 
                 <div class="formtext">
-                  <label class="form-label">Your Message</label>
+                  <label class="form-label" for="contact-message">Your Message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     class="form-control"
                     rows="3"
