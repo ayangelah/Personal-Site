@@ -312,6 +312,7 @@ function onClick(event) {
             //4: contact me
             case "Mailbox":
                 window.open("mailto:ayangelah@gmail.com");
+                break;
             //5: devpost/hackathons
             case "lightbulb":
             case "lightbulb_1":
