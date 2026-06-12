@@ -264,21 +264,21 @@ function onClick(event) {
             case "Plane011_12":
             case "Plane011_13":
             case "Plane011_14":
-                window.open("http://ayangelah.me/attachments/Resume 7_21_23.pdf");
+                window.open("./attachments/Resume.pdf");
                 break;
             //1: research
             case "Cube015":
-                window.open("http://ayangelah.me/attachments/The Effects of Citric Acid on Contraction of Mouse Cardiomyocytes.pdf");
+                window.open("./attachments/The Effects of Citric Acid on Contraction of Mouse Cardiomyocytes.pdf");
                 break;
             case "Cube017":
-                window.open("http://ayangelah.me/attachments/Illustrations of Ukrainian Phonetics.pdf");
+                window.open("./attachments/Illustrations of Ukrainian Phonetics.pdf");
                 break;
             case "Cube018":
-                window.open("http://ayangelah.me/attachments/Tone Sandhi in Hokkien Taiwanese.pdf");
+                window.open("./attachments/Tone Sandhi in Hokkien Taiwanese.pdf");
                 break;
             case "Bookshelf":
             case "Label":
-                window.open("http://ayangelah.me/research.html");
+                window.open("./research.html");
                 break;
             //2: art
             case "art":
@@ -319,7 +319,7 @@ function onClick(event) {
                 window.open("https://open.spotify.com/user/32yl40xhp98r8uziid81m33xo?si=86f01a2452a14632");
                 break;
             case "Airplane":
-                window.open("http://ayangelah.me/blog.html");
+                window.open("./blog.html");
                 break;
 
         }
