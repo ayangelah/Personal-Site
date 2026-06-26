@@ -239,6 +239,32 @@
         border: none;
       }
 
+      .tags {
+        margin: 10px 0;
+        line-height: 2.4;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        margin: 3px 5px 3px 0;
+        border-radius: 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 12px;
+        font-weight: bold;
+        color: #2b0a3d;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+      }
+
+      .tag-amber      { background-color: #f2b34c; }
+      .tag-teal       { background-color: #45c7b4; }
+      .tag-sky        { background-color: #6cc6e8; }
+      .tag-lavender   { background-color: #b491e6; }
+      .tag-rose       { background-color: #ef8fb0; }
+      .tag-coral      { background-color: #f4837a; }
+      .tag-periwinkle { background-color: #9aa6ee; }
+
       #submitbutton {
         border-radius: 5px; 
         padding: 5px; 
@@ -397,15 +423,13 @@
       <div class="textcontainer">
         <div class="textsection" id="aboutme">
           <h1>About Me</h1>
-          <p>Hello, I'm Angela, a dedicated computer science and linguistics major at UCLA. 
-            My academic journey has been a fascinating blend of technology and language, both 
-            natural and engineered. Beyond my academic pursuits, I'm a versatile 
-            individual with a passion for creativity. In my free time, you'll often find me 
-            engrossed in artistic pursuits, such as drawing and crafting poetry; both of which 
-            you may discover if you linger on this site :&#41;. I'm passionate about harnessing 
-            natural language processing to make technology more human-centric and accessible, 
-            paving the way for a future where machines understand and communicate with us in ways 
-            that empathize with users.</p>
+          <p>Hi, I'm Angela &#8212; a computer science and linguistics major at UCLA focused on
+            building AI systems, especially around language. I work across applied ML: integrating
+            LLMs, building embedding and retrieval pipelines, and training and deploying models
+            behind real products. My linguistics background is an edge &#8212; it helps me reason
+            about how language models actually behave, not just call them. Outside of engineering,
+            you'll often find me drawing and crafting poetry; both of which you may discover if you
+            linger on this site :&#41;.</p>
         </div>
       </div>
       <div class="minimenucont" style="position: relative; width: 100%; display: inline-block;">
@@ -441,20 +465,21 @@
             <li>
               <label><b>SereneStream</b></label>
               <i name="date">2/1/25 to 2/2/25 <a href="https://github.com/ayangelah/serene-stream">[Github]</a></i>
-              <p name="description">Serene Stream encourages you to engage with their surroundings by recording sound bytes: 
-                bird calls, water features, leaf rustling, etc. The app is minimalistic and audio-based to allow you to focus 
-                on their surroundings. After saving a few clips, these clips can be remixed with a chosen prompt into a 
-                personalized AI-generated lofi song. We hope the community can always bring a piece of nature home with them 
-                to build that connection and invest in their mental health. Furthermore, after creating tracks, we utilize an 
-                audio-to-vector comparison to fetch anonymous tracks from all over the world that are most similar to yours. 
-                In this way, Serene Stream fosters a sense of connection by nature lovers everywhere.
+              <div class="tags">
+                <span class="tag tag-amber">Generative Audio</span>
+                <span class="tag tag-teal">Audio Embeddings</span>
+                <span class="tag tag-sky">Vector Similarity Search</span>
+                <span class="tag tag-lavender">Multimodal</span>
+              </div>
+              <p name="description">Serene Stream encourages you to engage with their surroundings by recording sound bytes:
+                bird calls, water features, leaf rustling, etc. After saving a few clips, these clips can be remixed with a chosen
+                prompt into a personalized AI-generated lofi song. Each finished track is embedded as a vector and compared against
+                anonymous tracks from all over the world, surfacing the ones most similar to yours &#8212; fostering a sense of
+                connection between nature lovers everywhere.
                 <br><br>
-                Inspiration: The LGBTQ community experiences disproportionately higher rates of depression, anxiety, and suicide. 
-                While the cause of this is systemic and something we're still working through as a society, the age-old balm to 
-                mental health has always been nature. We were also inspired by National Parks which allow people to support 
-                the preservation and ownership of natural treasures simply by being in the parks. We wanted to combine attachment 
-                to our local greenspaces with investment in one's own mental health through nature. Our app hopes to foster 
-                creativity in the outdoors without impeding on being present when there.
+                Inspiration: nature has always been a balm for mental health &#8212; especially important for the LGBTQ community,
+                which experiences disproportionately higher rates of depression and anxiety. We wanted to combine attachment to
+                local greenspaces with investment in one's own mental health.
                 <br><br>
                 This project was an entry and first place winner in the 2025 QWER Hacks hackathon's Sustainability category, as well 
                 as winner for Most Creative and Best Use of Gen AI superlative prizes.
@@ -466,19 +491,20 @@
             <li>
               <label><b>PRideal World</b></label>
               <i name="date">2/2/24 to 2/4/24 <a href="https://github.com/jaczhi/prideal-world">[Github]</a></i>
-              <p name="description">PRideal World aims to teach bias-awareness through immersing users in interactive social 
-                situations grounded in real life and powered by an LLM trained on empathy. For those outside the 
-                community, PRideal World is a place to unearth subconscious biases and learn how to support those around them. 
-                For LGBTQ visitors to PRideal World, our simulators can validate the feelings of those who may have been in 
-                similar situations.
+              <div class="tags">
+                <span class="tag tag-lavender">LLM Orchestration</span>
+                <span class="tag tag-rose">Prompt Engineering</span>
+                <span class="tag tag-amber">Persona Design</span>
+                <span class="tag tag-teal">Multi-Turn Dialogue</span>
+              </div>
+              <p name="description">PRideal World teaches bias-awareness by immersing users in interactive social situations powered by an LLM. For those
+                outside the community, it's a place to unearth subconscious biases and learn how to support those around them; for
+                LGBTQ visitors, the simulations can validate feelings of those who may have been in similar situations.
                 <br><br>
-                The choice to use Large Language Models was a deeply integral one. LGBTQ individuals must “conserve their energy” 
-                to avoid sacrificing their own well-being to the movement. Simply put, our LLM&#8212;who talks through Valour 
-                the Unicorn&#8212;has the ability to give personalized, nuanced feedback to those who would most benefit, 
-                without sacrificing human time and effort.
-                <br><br>
-                Why the Unicorn? Unicorns, which are considered idealistic beasts, have been a long standing symbol of the LGBTQ 
-                community, representing acceptance, embracing one's uniqueness, and unbridled (ha!) self expression.
+                The choice to use Large Language Models was deliberate: our LLM &#8212; who talks through Valour the Unicorn &#8212;
+                gives personalized, nuanced feedback at scale, without requiring LGBTQ individuals to spend their own energy
+                educating others. (Why the unicorn? It's a long-standing symbol of the community: acceptance, uniqueness, and
+                unbridled &#8212; ha! &#8212; self expression.)
                 <br><br>
                 This project was an entry and third place winner in the 2024 QWER Hacks hackathon's Non-Traditional category, as well 
                 as winner for Most QWER superlative prize.
@@ -488,37 +514,42 @@
             </li>
             <hr>
             <li>
-              <label><b>DoctorAMA</b></label>
-              <i name="date">1/28/23 to 1/29/23 <a href="https://github.com/Jared-Velasquez/doctor-ama">[Github]</a></i>
-              <p name="description">Dr. AMA is a web-based medical chat app created to fight discrimination against 
-                the LGBTQ+ community. Dr. AMA allows users to create their own profile that fits with their social identity
-                and medical needs while providing anonymity and safeguarding against bias. This is accomplished through 
-                a customizable avatar option and the freedom to choose the questions to answer and share on the health 
-                profile checklist that are more aligned with users' medical needs. Additionally, users have the option 
-                to choose which physician they would like to be treated by from Dr. AMA's diverse and inclusive registry 
-                of inclusivity-trained medical professionals, easing patients', especially those belonging to minority 
-                groups, comfort around physicians and ultimately improving patient-physician interactions. Once a 
-                physician has been selected, patients may chat and engage with the doctor without fear of discrimination.
-                <br><br>
-                This project was an entry and second place winner in the 2023 QWER Hacks hackathon's health category.</p>
-              <img class="embeddedvideo" name="images" src="./attachments/Portfolio/FrontPageDoctorAMA.png" alt="Doctor AMA front page with customizable avatar and physician registry">
-            </li>
-            <hr>
-            <li>
               <label><b>RoadRager</b></label>
               <i name="date">3/5/23 <a href="https://github.com/ayangelah/RoadRager">[Github]</a></i>
-              <p name="description">We wanted to see if we could use machine learning to teach the general populace, 
-                especially in a city as traffic-prone as LA, good driving habits and attitudes to prevent road rage 
-                incidents. RoadRager is a 2D-style game that allows the user to control a vehicle in a fictional universe. 
-                There is a car in front of the vehicle, and they must be cautious not to be too aggressive a driver, 
-                especially when weather and road conditions constantly change. The driver is rated by a slider that informs 
-                the user how aggressively they are driving. The driving data is uploaded to a Google Cloud endpoint, 
-                where it is analyzed against machine learning model of our own design, trained on real-world driving data. 
-                The user must drive cautiously in order not to be rated as aggressive. We hope this will build good driving habits.
+              <div class="tags">
+                <span class="tag tag-coral">Supervised Learning</span>
+                <span class="tag tag-periwinkle">Model Training</span>
+                <span class="tag tag-sky">Cloud Model Serving</span>
+                <span class="tag tag-teal">Real-Time Inference</span>
+              </div>
+              <p name="description">We wanted to see if we could use machine learning to teach the general populace,
+                especially in a city as traffic-prone as LA, good driving habits and attitudes to prevent road rage
+                incidents. RoadRager is a 2D-style game in which the user controls a vehicle behind another car, and must
+                avoid driving too aggressively as weather and road conditions constantly change. A slider rates how
+                aggressively they're driving: the driving data is streamed to a Google Cloud endpoint, where it's scored
+                against a machine learning model of our own design, trained on real-world driving data.
+                <br><br>
                 This project was an entry and the first place winner of Best Game in the HOTHX hackathon at UCLA.
                 </p>
               <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/RoadRagerDemo.mp4"></video>
               <a class="portfoliolink" href="https://www.youtube.com/watch?v=-fCjPJWbS28">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>DoctorAMA</b></label>
+              <i name="date">1/28/23 to 1/29/23 <a href="https://github.com/Jared-Velasquez/doctor-ama">[Github]</a></i>
+              <p name="description">Dr. AMA is a web-based medical chat app created to fight discrimination against
+                the LGBTQ+ community. Dr. AMA allows users to create their own profile that fits with their social identity
+                and medical needs while providing anonymity and safeguarding against bias. This is accomplished through
+                a customizable avatar option and the freedom to choose the questions to answer and share on the health
+                profile checklist that are more aligned with users' medical needs. Additionally, users have the option
+                to choose which physician they would like to be treated by from Dr. AMA's diverse and inclusive registry
+                of inclusivity-trained medical professionals, easing patients', especially those belonging to minority
+                groups, comfort around physicians and ultimately improving patient-physician interactions. Once a
+                physician has been selected, patients may chat and engage with the doctor without fear of discrimination.
+                <br><br>
+                This project was an entry and second place winner in the 2023 QWER Hacks hackathon's health category.</p>
+              <img class="embeddedvideo" name="images" src="./attachments/Portfolio/FrontPageDoctorAMA.png" alt="Doctor AMA front page with customizable avatar and physician registry">
             </li>
             <hr>
             <li>
