@@ -1,7 +1,10 @@
 # === Private / stealth portfolio ===
-# PLAINTEXT source of the password-protected page. This must NEVER be committed —
-# only the encrypted output (private.html at the repo root) is safe to be public.
+# PLAINTEXT sources + raw images for the password-gated projects. These must
+# NEVER be committed — only the encrypted output (stealth.enc.js) is public-safe.
 private-src/
+
+# dependencies (installed via npm, not versioned)
+node_modules/
 
 # macOS noise
 .DS_Store
