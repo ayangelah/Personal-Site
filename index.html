@@ -161,15 +161,88 @@
         padding-left: 40px;
       }
 
-      .bubblegraph {
-        border-color: blanchedalmond;
-        box-shadow: 0 0 80px blanchedalmond;
-        background-color: rgba(255, 235, 205, 0.643);
-        backdrop-filter: blur;
-      }
-
       #codeportfolio {
         width: 90vw;
+      }
+
+      #capabilities ul {
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      #capabilities li {
+        margin-bottom: 14px;
+      }
+
+      .hidden { display: none !important; }
+
+      .stealth-gate {
+        max-width: 420px;
+        margin: 24px 15px 10px;
+        padding: 28px 26px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 30px rgba(96, 4, 121, 0.25);
+        text-align: center;
+        color: antiquewhite;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .stealth-lock-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0 0 6px;
+        color: blanchedalmond;
+      }
+      .stealth-lock-sub {
+        font-size: 13px;
+        opacity: 0.85;
+        margin: 0 0 16px;
+      }
+      #stealth-form {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      #stealth-password {
+        flex: 1;
+        min-width: 160px;
+        padding: 11px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        letter-spacing: 2px;
+        outline: 0;
+        box-sizing: border-box;
+      }
+      #stealth-password::placeholder { color: rgba(255, 255, 255, 0.6); }
+      #stealth-unlock {
+        padding: 11px 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(155, 15, 95, 0.75);
+        color: #fff;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.25s;
+      }
+      #stealth-unlock:hover { background: rgba(200, 27, 38, 0.85); }
+      .stealth-error {
+        color: #ffb3c1;
+        font-size: 13px;
+        margin: 12px 0 0;
+      }
+      .stealth-divider {
+        margin: 30px 15px;
       }
 
       #codeportfolio ul li {
@@ -340,29 +413,7 @@
           font-size: 14px;
           width: min-content;
         }
-        .bubblegraph {
-          height: 35vh;
-          border-radius: 10px;
-          padding-left: 0;
-          margin: 10vw;
-        }
       }
-
-      @media screen and (min-width: 768px) {
-        .bubblegraph {
-          width: 80vw;
-          border-radius: 70px;
-          margin: 15px;
-          margin-left: 10vw;
-        }
-
-        #skillscontainer {
-          align-items: center;
-          justify-content: center;
-          width: 100vw;
-        }
-      }
-  
     </style>
   </head>
   <body>
@@ -451,17 +502,56 @@
           </li>
         </ul>
       </div>
-      <div class="textcontainer" id="skillscontainer">
-        <div class="textsection" id="skills">
-          <h1>Skills</h1>
-          <p>Here's a bubble graph representation of my relative experience with each skill:</p>
+      <div class="textcontainer">
+        <div class="textsection" id="capabilities">
+          <h1>What I Build</h1>
+          <ul>
+            <li><b>LLM-powered applications</b> &#8212; orchestrating language models into multi-turn conversational agents with engineered prompts and designed personas.</li>
+            <li><b>Retrieval &amp; embedding systems</b> &#8212; encoding data as vectors and serving similarity search to power recommendation and RAG-style retrieval.</li>
+            <li><b>Custom models, trained and deployed</b> &#8212; building supervised models on real-world data and serving them behind cloud inference endpoints for real-time prediction.</li>
+            <li><b>Generative media pipelines</b> &#8212; prompt-conditioned generation of new content, such as audio.</li>
+          </ul>
         </div>
-        <img class="bubblegraph" src="./attachments/skillbubbles.png" alt="Collage of technology logos sized by relative experience: C++, C, Python, React, HTML5, CSS3, Node.js, git, and Linux appear largest, alongside C#, Java, JavaScript, R, three.js, Unity, Blender, VS Code, OCaml, Firebase, and Haskell">
       </div>
       <div class="textcontainer">
         <div class="textsection" id="codeportfolio">
           <h1>Code Portfolio</h1>
+          <div id="stealth-gate" class="stealth-gate">
+            <p class="stealth-lock-title">&#128274; Private Projects</p>
+            <p class="stealth-lock-sub">Latest, unpublished work. Enter the password to view.</p>
+            <form id="stealth-form" autocomplete="off">
+              <input id="stealth-password" type="password" placeholder="password" autocomplete="off" />
+              <button id="stealth-unlock" type="submit">Unlock</button>
+            </form>
+            <p id="stealth-error" class="stealth-error hidden">Incorrect password.</p>
+          </div>
+          <div id="stealth-slot"></div>
+          <hr class="stealth-divider">
           <ul>
+            <li>
+              <label><b>Mechanistic Interpretability of GPT-2 Attention Heads</b></label>
+              <i name="date">6/20/26 to 6/27/26 <a href="https://github.com/ayangelah/mech-interp-head-analysis">[Github]</a></i>
+              <div class="tags">
+                <span class="tag tag-lavender">Mechanistic Interpretability</span>
+                <span class="tag tag-teal">Transformer Circuits</span>
+                <span class="tag tag-coral">Activation Patching</span>
+                <span class="tag tag-sky">TransformerLens</span>
+              </div>
+              <p name="description">A systematic analysis of all 144 attention heads in GPT-2 Small
+                (12 layers &#215; 12 heads): what each head does, and whether the model causally depends on it.
+                I combine correlational QK/OV circuit scoring &#8212; induction, previous-token, copy, and
+                copy-suppression scores &#8212; with causal activation patching (forward hooks on hook_z, splicing
+                clean activations into corrupted runs). The analysis recovers the canonical circuit: induction
+                heads at L5H1 and L5H5, a previous-token head at L4H11, and a copy-suppression head at L10H7.
+                A key finding: induction is carried redundantly across a five-head cluster &#8212; patching any
+                single head recovers only ~10% of the behavior, evidence of distributed rather than localized
+                circuits. Built with TransformerLens.</p>
+              <img class="embeddedvideo" src="./attachments/Portfolio/mechinterp_induction_score.png" name="images" alt="Heatmap of induction scores across GPT-2 Small's 12 by 12 attention heads, strongest at heads 5.1, 5.5, 6.9 and 7.10">
+              <img class="embeddedvideo" src="./attachments/Portfolio/mechinterp_prev_token_score.png" name="images" alt="Heatmap of previous-token attention scores across GPT-2 Small's attention heads, with head 4.11 dominant">
+              <img class="embeddedvideo" src="./attachments/Portfolio/mechinterp_copy_score.png" name="images" alt="Heatmap of copy and copy-suppression scores across GPT-2 Small's attention heads">
+              <img class="embeddedvideo" src="./attachments/Portfolio/mechinterp_classification.png" name="images" alt="Grid classifying each of GPT-2 Small's 144 attention heads as induction, previous-token, copy, copy-suppression, or other">
+            </li>
+            <hr>
             <li>
               <label><b>SereneStream</b></label>
               <i name="date">2/1/25 to 2/2/25 <a href="https://github.com/ayangelah/serene-stream">[Github]</a></i>
@@ -664,5 +754,74 @@
       </div>
     </main>
     <script type="module" src="./dist/assets/index-7097a511.js"></script>
+    <script>
+      (function () {
+        const form = document.getElementById('stealth-form');
+        if (!form) return;
+        const pwInput = document.getElementById('stealth-password');
+        const errEl = document.getElementById('stealth-error');
+        const gate = document.getElementById('stealth-gate');
+        const slot = document.getElementById('stealth-slot');
+        const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+
+        // Load the (large) ciphertext only when someone actually tries to unlock,
+        // so public visitors never download it.
+        let blobPromise = null;
+        function loadBlob() {
+          if (window.STEALTH_BLOB) return Promise.resolve();
+          if (blobPromise) return blobPromise;
+          blobPromise = new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = './stealth.enc.js';
+            s.onload = resolve;
+            s.onerror = () => { blobPromise = null; reject(new Error('load failed')); };
+            document.body.appendChild(s);
+          });
+          return blobPromise;
+        }
+
+        async function decrypt(password, blob) {
+          const enc = new TextEncoder();
+          const keyMaterial = await crypto.subtle.importKey(
+            'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
+          );
+          const key = await crypto.subtle.deriveKey(
+            { name: 'PBKDF2', salt: fromB64(blob.salt), iterations: blob.iter, hash: 'SHA-256' },
+            keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
+          );
+          const pt = await crypto.subtle.decrypt(
+            { name: 'AES-GCM', iv: fromB64(blob.iv) }, key, fromB64(blob.ct)
+          );
+          return new TextDecoder().decode(pt);
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          errEl.classList.add('hidden');
+          try {
+            await loadBlob();
+          } catch (err) {
+            errEl.textContent = 'Could not load private content. Try again.';
+            errEl.classList.remove('hidden');
+            return;
+          }
+          if (!window.STEALTH_BLOB) {
+            errEl.textContent = 'No private content is published yet.';
+            errEl.classList.remove('hidden');
+            return;
+          }
+          try {
+            // AES-GCM throws on a wrong password (auth tag mismatch).
+            const html = await decrypt(pwInput.value, window.STEALTH_BLOB);
+            slot.innerHTML = html;
+            gate.classList.add('hidden');
+          } catch (err) {
+            errEl.textContent = 'Incorrect password.';
+            errEl.classList.remove('hidden');
+            pwInput.value = '';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

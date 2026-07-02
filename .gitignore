@@ -1,0 +1,7 @@
+# === Private / stealth portfolio ===
+# PLAINTEXT source of the password-protected page. This must NEVER be committed —
+# only the encrypted output (private.html at the repo root) is safe to be public.
+private-src/
+
+# macOS noise
+.DS_Store
