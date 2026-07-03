@@ -9,6 +9,7 @@
     <link rel="manifest" href="https://ayangelah.me/attachments/Favicon/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Angela Yang</title>
+    <meta name="description" content="Angela Yang. AI engineer at Meta working on coding-agent evaluations. CS + Linguistics, UCLA. Working toward AI security." />
     <style>
       html {
         scroll-behavior: smooth;
@@ -106,7 +107,7 @@
         overflow: hidden;
         align-self: top;
         margin: 0;
-        background: linear-gradient(180deg, rgba(0,0,0,0), #ed5d0f, #ed5d0f, #c81b26, #9b0f5f, #600479, #160a47, #0b032b);
+        background: linear-gradient(180deg, rgba(237,93,15,0) 0, #ed5d0f 220px, #ed5d0f 22%, #c81b26 38%, #9b0f5f 52%, #600479 66%, #160a47 83%, #0b032b 100%);
       }
 
       .bottomcanvas {
@@ -172,6 +173,20 @@
 
       #capabilities li {
         margin-bottom: 14px;
+      }
+
+      #experience ul {
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      #experience li {
+        margin-bottom: 12px;
+      }
+
+      #experience a,
+      #socials a {
+        color: blanchedalmond;
       }
 
       .hidden { display: none !important; }
@@ -258,6 +273,7 @@
 
       .textsection {
         color: antiquewhite;
+        text-shadow: 1px 1px 3px rgba(70, 20, 0, 0.55);
         line-height: 30px;
         width: 50%;
         padding: 15px;
@@ -425,12 +441,7 @@
       <p><span>
         <b>Angela Yang</b>
         <br>
-        <span class="tooltip">CS
-          <span class="tooltiptext">Computer Science</span>
-        </span> +
-        <span class="tooltip">Ling
-          <span class="tooltiptext">Linguistics</span>
-        </span> @ UCLA</span></p>
+        AI Engineer @ Meta</span></p>
     </div>
       <ul class="menu">
         <li>
@@ -474,13 +485,32 @@
       <div class="textcontainer">
         <div class="textsection" id="aboutme">
           <h1>About Me</h1>
-          <p>Hi, I'm Angela &#8212; a computer science and linguistics major at UCLA focused on
-            building AI systems, especially around language. I work across applied ML: integrating
-            LLMs, building embedding and retrieval pipelines, and training and deploying models
-            behind real products. My linguistics background is an edge &#8212; it helps me reason
-            about how language models actually behave, not just call them. Outside of engineering,
-            you'll often find me drawing and crafting poetry; both of which you may discover if you
-            linger on this site :&#41;.</p>
+          <p>Hi, I'm Angela. I'm a software engineer at Meta AI, where I work on evaluations for
+            AI coding agents: designing benchmarks that surface capability gaps, building evaluation
+            and training data with anti-contamination safeguards, and partnering with researchers to
+            turn failure modes into training improvements. Before this I shipped consumer features at
+            WhatsApp, and I studied Computer Science and Linguistics at UCLA, a background that shapes
+            how I reason about language models. My long-term focus is AI security: protecting people
+            from AI-enabled harm at every scale, from individual users to preventing weaponized AI.
+            Outside of work, you'll find me drawing and writing poetry, both of which you may discover
+            if you linger on this site :&#41;.</p>
+        </div>
+      </div>
+      <div class="textcontainer">
+        <div class="textsection" id="experience">
+          <h1>Experience</h1>
+          <ul>
+            <li><b>Meta AI</b>, Software Engineer (June 2026 to present): benchmark design and
+              contamination-safe evaluation data for AI coding agents; failure-mode analysis with
+              model researchers to guide training priorities.</li>
+            <li><b>Meta WhatsApp</b>, Software Engineer (2025 to 2026): consumer iOS features across
+              the Usernames initiative, shipped to a 2B+ user base.</li>
+            <li><b>Netflix</b>, Software Engineer Intern (2024): RESTful Flask service on DynamoDB
+              with AuthZ controls and a configurable table/caching system.</li>
+            <li><b>UCLA VECTR Lab</b>, ML Researcher (2023 to 2024): deep learning models for drone
+              velocity optimization; A* navigation with LiDAR and ROS.</li>
+          </ul>
+          <p>Details in my <a href="attachments/Resume.pdf" target="_blank">resume</a>.</p>
         </div>
       </div>
       <div class="minimenucont" style="position: relative; width: 100%; display: inline-block;">
@@ -506,10 +536,10 @@
         <div class="textsection" id="capabilities">
           <h1>What I Build</h1>
           <ul>
-            <li><b>LLM-powered applications</b> &#8212; orchestrating language models into multi-turn conversational agents with engineered prompts and designed personas.</li>
-            <li><b>Retrieval &amp; embedding systems</b> &#8212; encoding data as vectors and serving similarity search to power recommendation and RAG-style retrieval.</li>
-            <li><b>Custom models, trained and deployed</b> &#8212; building supervised models on real-world data and serving them behind cloud inference endpoints for real-time prediction.</li>
-            <li><b>Generative media pipelines</b> &#8212; prompt-conditioned generation of new content, such as audio.</li>
+            <li><b>LLM-powered applications:</b> orchestrating language models into multi-turn conversational agents with engineered prompts and designed personas.</li>
+            <li><b>Retrieval &amp; embedding systems:</b> encoding data as vectors and serving similarity search to power recommendation and RAG-style retrieval.</li>
+            <li><b>Custom models, trained and deployed:</b> building supervised models on real-world data and serving them behind cloud inference endpoints for real-time prediction.</li>
+            <li><b>Generative media pipelines:</b> prompt-conditioned generation of new content, such as audio.</li>
           </ul>
         </div>
       </div>
@@ -539,11 +569,11 @@
               </div>
               <p name="description">A systematic analysis of all 144 attention heads in GPT-2 Small
                 (12 layers &#215; 12 heads): what each head does, and whether the model causally depends on it.
-                I combine correlational QK/OV circuit scoring &#8212; induction, previous-token, copy, and
-                copy-suppression scores &#8212; with causal activation patching (forward hooks on hook_z, splicing
+                I combine correlational QK/OV circuit scoring (induction, previous-token, copy, and
+                copy-suppression scores) with causal activation patching (forward hooks on hook_z, splicing
                 clean activations into corrupted runs). The analysis recovers the canonical circuit: induction
                 heads at L5H1 and L5H5, a previous-token head at L4H11, and a copy-suppression head at L10H7.
-                A key finding: induction is carried redundantly across a five-head cluster &#8212; patching any
+                A key finding: induction is carried redundantly across a five-head cluster; patching any
                 single head recovers only ~10% of the behavior, evidence of distributed rather than localized
                 circuits. Built with TransformerLens.</p>
               <img class="embeddedvideo" src="./attachments/Portfolio/mechinterp_induction_score.png" name="images" alt="Heatmap of induction scores across GPT-2 Small's 12 by 12 attention heads, strongest at heads 5.1, 5.5, 6.9 and 7.10">
@@ -564,10 +594,10 @@
               <p name="description">Serene Stream encourages you to engage with their surroundings by recording sound bytes:
                 bird calls, water features, leaf rustling, etc. After saving a few clips, these clips can be remixed with a chosen
                 prompt into a personalized AI-generated lofi song. Each finished track is embedded as a vector and compared against
-                anonymous tracks from all over the world, surfacing the ones most similar to yours &#8212; fostering a sense of
+                anonymous tracks from all over the world, surfacing the ones most similar to yours, fostering a sense of
                 connection between nature lovers everywhere.
                 <br><br>
-                Inspiration: nature has always been a balm for mental health &#8212; especially important for the LGBTQ community,
+                Inspiration: nature has always been a balm for mental health, especially important for the LGBTQ community,
                 which experiences disproportionately higher rates of depression and anxiety. We wanted to combine attachment to
                 local greenspaces with investment in one's own mental health.
                 <br><br>
@@ -591,10 +621,10 @@
                 outside the community, it's a place to unearth subconscious biases and learn how to support those around them; for
                 LGBTQ visitors, the simulations can validate feelings of those who may have been in similar situations.
                 <br><br>
-                The choice to use Large Language Models was deliberate: our LLM &#8212; who talks through Valour the Unicorn &#8212;
+                The choice to use Large Language Models was deliberate: our LLM, who talks through Valour the Unicorn,
                 gives personalized, nuanced feedback at scale, without requiring LGBTQ individuals to spend their own energy
                 educating others. (Why the unicorn? It's a long-standing symbol of the community: acceptance, uniqueness, and
-                unbridled &#8212; ha! &#8212; self expression.)
+                unbridled (ha!) self expression.)
                 <br><br>
                 This project was an entry and third place winner in the 2024 QWER Hacks hackathon's Non-Traditional category, as well 
                 as winner for Most QWER superlative prize.
@@ -703,10 +733,10 @@
         <div class="textsection" id="socials">
           <h1>Socials</h1>
           <ul>
-            <li><b>LinkedIn: </b>https://www.linkedin.com/in/ayangelah</li>
-            <li><b>Github: </b>https://github.com/ayangelah</li>
-            <li><b>Devpost: </b>https://devpost.com/ayangelah</li>
-            <li><b>Discord: </b>seasponge</li>
+            <li><b>LinkedIn: </b><a href="https://www.linkedin.com/in/ayangelah" target="_blank">linkedin.com/in/ayangelah</a></li>
+            <li><b>Github: </b><a href="https://github.com/ayangelah" target="_blank">github.com/ayangelah</a></li>
+            <li><b>Devpost: </b><a href="https://devpost.com/ayangelah" target="_blank">devpost.com/ayangelah</a></li>
+            <li><b>Email: </b><a href="mailto:ayangelah@gmail.com">ayangelah@gmail.com</a></li>
           </ul>
         </div>
       </div>
@@ -734,7 +764,7 @@
                   <label class="form-label" for="contact-phone">Phone (optional)</label>
                   <input id="contact-phone" name="phone" type="tel" class="form-control" aria-describedby="phoneHelp" />
                   <div id="phoneHelp" class="form-text">
-                    If you rather talk to this human directly.
+                    If you'd rather talk to this human directly.
                   </div>
                 </div>
 

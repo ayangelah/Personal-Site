@@ -1,6 +1,6 @@
 # === Private / stealth portfolio ===
 # PLAINTEXT sources + raw images for the password-gated projects. These must
-# NEVER be committed — only the encrypted output (stealth.enc.js) is public-safe.
+# NEVER be committed; only the encrypted output (stealth.enc.js) is public-safe.
 private-src/
 
 # dependencies (installed via npm, not versioned)

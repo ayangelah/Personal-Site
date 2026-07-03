@@ -7,16 +7,16 @@ until then.
 
 ## Files
 
-- **`private-src/stealth-projects.html`** — plaintext stealth projects you edit.
+- **`private-src/stealth-projects.html`**: plaintext stealth projects you edit.
   Git-ignored, never committed. Markup mirrors the public project cards.
-- **`stealth.enc.js`** — AES-256-GCM ciphertext of the above. Committed & public
+- **`stealth.enc.js`**: AES-256-GCM ciphertext of the above. Committed & public
   (safe: useless without the password).
-- **`index.html`** — public; contains the locked panel + the in-browser decrypt JS.
-- **`scripts/encrypt-stealth.mjs`** — the encryptor (PBKDF2 + AES-GCM).
+- **`index.html`**: public; contains the locked panel + the in-browser decrypt JS.
+- **`scripts/encrypt-stealth.mjs`**: the encryptor (PBKDF2 + AES-GCM).
 
 ## To add or edit stealth projects
 
-1. Edit **`private-src/stealth-projects.html`** (git-ignored — safe). Add `<li>`
+1. Edit **`private-src/stealth-projects.html`** (git-ignored: safe). Add `<li>`
    blocks separated by `<hr>`, same as the public cards.
 2. Re-encrypt (run in your own terminal so the password isn't logged):
    ```
@@ -28,7 +28,7 @@ until then.
    git commit -m "update private projects"
    git push
    ```
-4. Never `git add private-src/` — the .gitignore blocks it; keep it that way.
+4. Never `git add private-src/`: the .gitignore blocks it; keep it that way.
 
 ## Honest security model
 
