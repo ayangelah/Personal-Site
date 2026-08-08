@@ -107,7 +107,7 @@
         overflow: hidden;
         align-self: top;
         margin: 0;
-        background: linear-gradient(180deg, rgba(237,93,15,0) 0, #ed5d0f 220px, #ed5d0f 22%, #c81b26 38%, #9b0f5f 52%, #600479 66%, #160a47 83%, #0b032b 100%);
+        background: linear-gradient(180deg, rgba(246,162,113,0) 0, #f6a271 220px, #f0823f 26%, #e0561a 38%, #c81b26 50%, #9b0f5f 62%, #600479 72%, #160a47 85%, #0b032b 100%);
       }
 
       .bottomcanvas {
@@ -175,13 +175,37 @@
         margin-bottom: 14px;
       }
 
+      /* Experience rendered as a vertical timeline: white line + dots, no dates */
       #experience ul {
-        padding-left: 0;
-        margin-left: 0;
+        position: relative;
+        list-style: none;
+        padding-left: 26px;
+        margin: 6px 0 0 8px;
       }
-
+      #experience ul::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        bottom: 8px;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 2px;
+      }
       #experience li {
-        margin-bottom: 12px;
+        position: relative;
+        margin-bottom: 18px;
+      }
+      #experience li::before {
+        content: "";
+        position: absolute;
+        left: -25px;
+        top: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(60, 10, 0, 0.28);
       }
 
       #experience a,
@@ -273,7 +297,6 @@
 
       .textsection {
         color: antiquewhite;
-        text-shadow: 1px 1px 3px rgba(70, 20, 0, 0.55);
         line-height: 30px;
         width: 50%;
         padding: 15px;
@@ -284,6 +307,37 @@
 
       .textcontainer {
         width: 100%;
+      }
+
+      /* About Me: text on the left, smear-masked self-portrait on the right */
+      .aboutrow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2%;
+        flex-wrap: wrap;
+      }
+      .aboutrow .aboutavatar {
+        flex: 0 1 44%;
+        max-width: 500px;
+        height: auto;
+        /* the smear (black-on-white converted to an alpha PNG) clips the drawing
+           into a painterly torn-edge shape; stretched 1:1 to the image box */
+        -webkit-mask-image: url(attachments/smear-mask.png);
+        mask-image: url(attachments/smear-mask.png);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        pointer-events: none;
+        user-select: none;
+      }
+      @media screen and (max-width: 768px) {
+        .aboutrow .aboutavatar {
+          flex-basis: 80%;
+          max-width: 340px;
+          margin: 0 auto;
+        }
       }
 
       .minimenu li {
@@ -482,7 +536,7 @@
       </ul>
     <canvas class="topcanvas" id="bg"></canvas>
     <main>
-      <div class="textcontainer">
+      <div class="textcontainer aboutrow">
         <div class="textsection" id="aboutme">
           <h1>About Me</h1>
           <p>Hi, I'm Angela. I'm a software engineer at Meta AI, where I work on evaluations for
@@ -495,19 +549,21 @@
             Outside of work, you'll find me drawing and writing poetry, both of which you may discover
             if you linger on this site :&#41;.</p>
         </div>
+        <img class="aboutavatar" src="attachments/stylized_avatar.png"
+          alt="Illustrated self-portrait of Angela as a winged moth">
       </div>
       <div class="textcontainer">
         <div class="textsection" id="experience">
           <h1>Experience</h1>
           <ul>
-            <li><b>Meta AI</b>, Software Engineer (June 2026 to present): benchmark design and
+            <li><b>Meta AI</b>, Software Engineer: benchmark design and
               contamination-safe evaluation data for AI coding agents; failure-mode analysis with
               model researchers to guide training priorities.</li>
-            <li><b>Meta WhatsApp</b>, Software Engineer (2025 to 2026): consumer iOS features across
+            <li><b>Meta WhatsApp</b>, Software Engineer: consumer iOS features across
               the Usernames initiative, shipped to a 2B+ user base.</li>
-            <li><b>Netflix</b>, Software Engineer Intern (2024): RESTful Flask service on DynamoDB
+            <li><b>Netflix</b>, Software Engineer: RESTful Flask service on DynamoDB
               with AuthZ controls and a configurable table/caching system.</li>
-            <li><b>UCLA VECTR Lab</b>, ML Researcher (2023 to 2024): deep learning models for drone
+            <li><b>UCLA VECTR Lab</b>, ML Researcher: deep learning models for drone
               velocity optimization; A* navigation with LiDAR and ROS.</li>
           </ul>
           <p>Details in my <a href="attachments/Resume.pdf" target="_blank">resume</a>.</p>
