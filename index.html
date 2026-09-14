@@ -275,6 +275,44 @@
         transition: 0.25s;
       }
       #stealth-unlock:hover { background: rgba(200, 27, 38, 0.85); }
+      #stealth-unlock:disabled { cursor: progress; }
+      #stealth-unlock.is-loading::before {
+        content: '';
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        margin-right: 8px;
+        vertical-align: -1px;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: stealth-spin 0.8s linear infinite;
+      }
+      @keyframes stealth-spin { to { transform: rotate(360deg); } }
+      /* Collapses the gate; JS pins its current height first so it can animate to 0. */
+      .stealth-gate.is-closing {
+        height: 0 !important;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: height 0.5s ease, margin 0.5s ease, padding 0.5s ease, opacity 0.3s ease;
+      }
+      /* 0fr -> 1fr grid row animates to the content's natural height. */
+      #stealth-slot {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition: grid-template-rows 0.7s ease, opacity 0.7s ease 0.15s;
+      }
+      #stealth-slot > .stealth-slot-inner { overflow: hidden; min-height: 0; }
+      #stealth-slot.is-open { grid-template-rows: 1fr; opacity: 1; }
+      @media (prefers-reduced-motion: reduce) {
+        .stealth-gate.is-closing, #stealth-slot { transition: none; }
+      }
       .stealth-error {
         color: #ffb3c1;
         font-size: 13px;
@@ -881,31 +919,70 @@
           return new TextDecoder().decode(pt);
         }
 
+        const unlockBtn = document.getElementById('stealth-unlock');
+        let busy = false;
+
+        function setLoading(on) {
+          busy = on;
+          unlockBtn.disabled = on;
+          pwInput.disabled = on;
+          unlockBtn.classList.toggle('is-loading', on);
+          unlockBtn.setAttribute('aria-busy', String(on));
+          unlockBtn.textContent = on ? 'Unlocking' : 'Unlock';
+        }
+
+        function showError(msg) {
+          setLoading(false);
+          errEl.textContent = msg;
+          errEl.classList.remove('hidden');
+          pwInput.focus();
+        }
+
+        // Swap the gate for the decrypted content: collapse one, expand the other.
+        function reveal() {
+          gate.style.height = gate.offsetHeight + 'px';
+          requestAnimationFrame(() => {
+            gate.classList.add('is-closing');
+            slot.classList.add('is-open');
+          });
+          gate.addEventListener('transitionend', function onEnd(e) {
+            if (e.target !== gate || e.propertyName !== 'height') return;
+            gate.removeEventListener('transitionend', onEnd);
+            gate.classList.add('hidden');
+          });
+        }
+
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
+          if (busy) return;
           errEl.classList.add('hidden');
+          setLoading(true);
           try {
             await loadBlob();
           } catch (err) {
-            errEl.textContent = 'Could not load private content. Try again.';
-            errEl.classList.remove('hidden');
+            showError('Could not load private content. Try again.');
             return;
           }
           if (!window.STEALTH_BLOB) {
-            errEl.textContent = 'No private content is published yet.';
-            errEl.classList.remove('hidden');
+            showError('No private content is published yet.');
             return;
           }
+          let html;
           try {
             // AES-GCM throws on a wrong password (auth tag mismatch).
-            const html = await decrypt(pwInput.value, window.STEALTH_BLOB);
-            slot.innerHTML = html;
-            gate.classList.add('hidden');
+            html = await decrypt(pwInput.value, window.STEALTH_BLOB);
           } catch (err) {
-            errEl.textContent = 'Incorrect password.';
-            errEl.classList.remove('hidden');
+            showError('Incorrect password.');
             pwInput.value = '';
+            return;
           }
+          const inner = document.createElement('div');
+          inner.className = 'stealth-slot-inner';
+          inner.innerHTML = html;
+          slot.appendChild(inner);
+          // Decode embedded images first so the expand animates to the final height.
+          await Promise.all([...inner.querySelectorAll('img')].map((img) => img.decode().catch(() => {})));
+          reveal();
         });
       })();
     </script>
