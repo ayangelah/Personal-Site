@@ -446,6 +446,169 @@
       .tag-coral      { background-color: #f4837a; }
       .tag-periwinkle { background-color: #9aa6ee; }
 
+      .project-results {
+        box-sizing: border-box;
+        max-width: 880px;
+        margin: 24px 0 32px;
+        padding: 28px;
+        border: 1px solid #e2e5eb;
+        border-radius: 14px;
+        background: #fff;
+        color: #243044;
+        box-shadow: 0 6px 24px rgba(52, 24, 30, 0.08);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        text-shadow: none;
+        letter-spacing: normal;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .project-results h3 {
+        margin: 0;
+        color: #192536;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 650;
+      }
+
+      #codeportfolio .project-results .result-subtitle {
+        margin: 6px 0 18px;
+        color: #536176;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .result-chart {
+        width: 100%;
+        height: 360px;
+        margin: 0 0 20px;
+      }
+
+      .result-chart[hidden] { display: none; }
+
+      .result-table-scroll {
+        overflow-x: auto;
+      }
+
+      .project-results table {
+        width: 100%;
+        border-collapse: collapse;
+        font: inherit;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      .project-results caption {
+        margin: 0 0 16px;
+        text-align: left;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 650;
+        color: #192536;
+      }
+
+      .project-results th,
+      .project-results td {
+        padding: 14px 12px;
+        border-bottom: 1px solid #e3e7ee;
+        text-align: right;
+        vertical-align: top;
+      }
+
+      .project-results thead th {
+        background: #f3f5f8;
+        color: #435168;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .project-results tbody th { font-weight: 600; }
+      .project-results tbody tr:nth-child(even) { background: #fafbfc; }
+      .project-results tbody tr:last-child > * { border-bottom: 0; }
+
+      .project-results th:first-child,
+      .project-results td:first-child,
+      .project-results .experiment-status th,
+      .project-results .experiment-status td { text-align: left; }
+
+      .project-results tfoot {
+        border-top: 2px solid #d7dee8;
+        background: #f3f8f8;
+        font-weight: 600;
+      }
+
+      .project-results .result-detail {
+        display: block;
+        margin-top: 4px;
+        color: #647187;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .result-status {
+        display: inline-block;
+        padding: 3px 9px;
+        border-radius: 5px;
+        background: #e8f4f0;
+        color: #24604c;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .result-status.pending { background: #fff2d9; color: #805d18; }
+
+      .result-data {
+        border-top: 1px solid #e3e7ee;
+        padding-top: 16px;
+      }
+      .result-data summary {
+        width: fit-content;
+        color: #435168;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .result-data[open] summary { margin-bottom: 16px; }
+      .result-data caption { font-size: 16px; }
+      .lora-data { min-width: 650px; }
+
+      .result-means {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin: 0 0 24px;
+        padding: 18px 20px;
+        border-radius: 8px;
+        background: #f3f5f8;
+      }
+      .result-means dt { color: #536176; font-size: 13px; }
+      .result-means dd { margin: 2px 0 0; font-size: 25px; font-weight: 650; color: #087f8c; }
+      .result-means .random-mean { color: #7154bf; }
+
+      #codeportfolio .project-results .result-note {
+        margin: 18px 0 0;
+        color: #536176;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+      .project-results .portfoliolink { color: #235e91; text-underline-offset: 3px; }
+      .project-results :focus-visible { outline: 2px solid #235e91; outline-offset: 4px; }
+
+      @media screen and (max-width: 480px) {
+        .project-results { padding: 20px 14px; }
+        .project-results h3,
+        .project-results caption { font-size: 20px; }
+        .project-results table { font-size: 14px; }
+        .project-results th,
+        .project-results td { padding: 12px 8px; }
+        .project-results .result-detail { font-size: 12px; }
+        .project-results .experiment-status th,
+        .project-results .experiment-status td { padding: 12px 6px; }
+        .project-results .result-status { padding: 3px 5px; font-size: 12px; }
+        .result-means { gap: 20px; padding: 14px; }
+        .result-chart { height: 340px; }
+      }
+
       #submitbutton {
         border-radius: 5px; 
         padding: 5px; 
@@ -653,6 +816,135 @@
           <hr class="stealth-divider">
           <ul>
             <li>
+              <label><b>HarmBench-Inspired Adversarial Training (R2D2)</b></label>
+              <i><a href="https://github.com/ayangelah/R2D2-toy-experiment">[Github]</a></i>
+              <div class="tags">
+                <span class="tag tag-coral">Adversarial Training</span>
+                <span class="tag tag-lavender">AI Safety</span>
+                <span class="tag tag-teal">nanoGCG</span>
+                <span class="tag tag-sky">LoRA</span>
+              </div>
+              <p name="description">A toy implementation of the R2D2 adversarial-training approach from
+                HarmBench, using GPT-2, nanoGCG, and LoRA. I explored static training on a fixed adversarial
+                suffix, then a dynamic loop that refreshes the suffix against the updated model before
+                each training step. The objective combines learning a refusal response, penalizing an
+                unwanted target, and supervised examples intended to preserve helpful behavior. The
+                current notebook focuses on one toy behavior and one evolving attack string; broader
+                attack-pool comparisons are still in progress.</p>
+              <div class="project-results">
+                <div class="result-table-scroll" role="region" aria-label="R2D2 experiment status" tabindex="0">
+                <table class="experiment-status" aria-describedby="r2d2-results-note">
+                  <caption>Training approaches and evaluation status</caption>
+                  <thead>
+                    <tr><th scope="col">Experiment</th><th scope="col">Approach</th><th scope="col">Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">Static training</th><td>Train against a fixed adversarial suffix</td><td><span class="result-status">Implemented</span></td></tr>
+                    <tr><th scope="row">Dynamic training</th><td>Refresh the suffix with nanoGCG each round</td><td><span class="result-status">Implemented</span></td></tr>
+                    <tr><th scope="row">Attack-pool comparison</th><td>Expand to six toy behaviors</td><td><span class="result-status pending">Evaluation pending</span></td></tr>
+                  </tbody>
+                </table>
+                </div>
+                <p class="result-note" id="r2d2-results-note">GPT-2 with LoRA adapters. This shows the experiment's
+                  implementation status; robustness and helpfulness comparisons have not yet been evaluated.
+                  <a class="portfoliolink" href="https://github.com/ayangelah/R2D2-toy-experiment/blob/main/R2D2_toy_experiment.ipynb">Explore the notebook</a>.</p>
+              </div>
+            </li>
+            <hr>
+            <li>
+              <label><b>LoRA: Parameter-Efficient Fine-Tuning of GPT-2</b></label>
+              <i><a href="https://github.com/ayangelah/LoRA-toy-experiment">[Github]</a></i>
+              <div class="tags">
+                <span class="tag tag-sky">LoRA</span>
+                <span class="tag tag-teal">Parameter-Efficient Fine-Tuning</span>
+                <span class="tag tag-amber">Controlled Ablations</span>
+                <span class="tag tag-lavender">PyTorch &amp; PEFT</span>
+              </div>
+              <p name="description">I explored Low-Rank Adaptation by fine-tuning GPT-2 on Tiny Shakespeare
+                while keeping the pretrained weights frozen. I inspected PEFT's trainable parameters,
+                verified gradient flow, and compared adapter ranks 2, 8, and 32 using the same data split,
+                seed, batch order, and training budget. All three configurations improved held-out
+                language-modeling loss while training less than 1% of the model's parameters. Rank 32
+                reduced validation loss from 4.4445 to 3.5920, with diminishing gains as adapter capacity
+                increased. This small, single-seed study helped me understand parameter-efficient
+                adaptation and how to design controlled ablations.</p>
+              <div class="project-results">
+                <h3 id="lora-chart-title">LoRA learning curves</h3>
+                <p class="result-subtitle">Validation loss across training epochs. Lower is better.</p>
+                <div id="lora-chart" class="result-chart" role="img" aria-labelledby="lora-chart-title" aria-describedby="lora-results-note" hidden></div>
+                <details class="result-data" id="lora-data" open>
+                  <summary>View exact values and parameter counts</summary>
+                  <div class="result-table-scroll" role="region" aria-label="LoRA experiment values" tabindex="0">
+                <table class="lora-data" aria-describedby="lora-results-note">
+                  <caption>Validation loss by adapter rank</caption>
+                  <thead>
+                    <tr><th scope="col">Rank</th><th scope="col">Trainable parameters</th><th scope="col">Baseline</th><th scope="col">Epoch 1</th><th scope="col">Epoch 2</th><th scope="col">Epoch 3</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">2</th><td>73,728 <span class="result-detail">0.0592% of model</span></td><td data-loss>4.4445</td><td data-loss>4.1752</td><td data-loss>3.8855</td><td data-loss>3.7904</td></tr>
+                    <tr><th scope="row">8</th><td>294,912 <span class="result-detail">0.2364% of model</span></td><td data-loss>4.4445</td><td data-loss>3.9013</td><td data-loss>3.7369</td><td data-loss>3.6606</td></tr>
+                    <tr><th scope="row">32</th><td>1,179,648 <span class="result-detail">0.9391% of model</span></td><td data-loss>4.4445</td><td data-loss>3.7403</td><td data-loss>3.6233</td><td data-loss>3.5920</td></tr>
+                  </tbody>
+                </table>
+                  </div>
+                </details>
+                <p class="result-note" id="lora-results-note">Lower loss is better. All runs started at
+                  <b>4.4445</b>. GPT-2 on Tiny Shakespeare, three epochs, one seed, and the same data split.
+                  Higher rank helped in this setup, with diminishing gains.
+                  <a class="portfoliolink" href="https://github.com/ayangelah/LoRA-toy-experiment/blob/main/lora.ipynb">Explore the notebook</a>.</p>
+              </div>
+            </li>
+            <hr>
+            <li>
+              <label><b>GCG: Gradient-Guided Token Search</b></label>
+              <i><a href="https://github.com/ayangelah/GCG-toy-experiment">[Github]</a></i>
+              <div class="tags">
+                <span class="tag tag-coral">Greedy Coordinate Gradient</span>
+                <span class="tag tag-periwinkle">Discrete Optimization</span>
+                <span class="tag tag-teal">GPT-2</span>
+                <span class="tag tag-sky">PyTorch</span>
+              </div>
+              <p name="description">I built a small GPT-2 experiment to explore gradient-guided search
+                over discrete tokens. Starting with an editable suffix and a benign one-token target,
+                I projected input-embedding gradients onto vocabulary embeddings, proposed token
+                substitutions, and evaluated each candidate's actual target loss. I compared this
+                approach with random token search under the same candidate-evaluation budget. Across
+                three seeds, gradient-guided search reached an average final loss of 3.167, compared
+                with 6.600 for random search. The experiment illustrates GCG's core intuition, while
+                remaining limited to one prompt, one model, and a single target token.</p>
+              <div class="project-results">
+                <h3 id="gcg-chart-title">Gradient-guided vs. random search</h3>
+                <p class="result-subtitle">Final target-token loss for each seed. Lower is better.</p>
+                <div id="gcg-chart" class="result-chart" role="img" aria-labelledby="gcg-chart-title" aria-describedby="gcg-results-note" hidden></div>
+                <dl class="result-means">
+                  <div><dt>GCG mean loss</dt><dd>3.167</dd></div>
+                  <div><dt>Random search mean loss</dt><dd class="random-mean">6.600</dd></div>
+                </dl>
+                <details class="result-data" id="gcg-data" open>
+                  <summary>View exact values by seed</summary>
+                <table aria-describedby="gcg-results-note">
+                  <caption>Saved three-seed comparison</caption>
+                  <thead>
+                    <tr><th scope="col">Seed</th><th scope="col">GCG final loss</th><th scope="col">Random final loss</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><th scope="row">0</th><td>2.438</td><td>7.464</td></tr>
+                    <tr><th scope="row">1</th><td>3.597</td><td>6.783</td></tr>
+                    <tr><th scope="row">2</th><td>3.466</td><td>5.553</td></tr>
+                  </tbody>
+                  <tfoot>
+                    <tr><th scope="row">Mean</th><td>3.167</td><td>6.600</td></tr>
+                  </tfoot>
+                </table>
+                </details>
+                <p class="result-note" id="gcg-results-note">Target-token cross-entropy, lower is better; all runs started
+                  at <b>10.130</b>. Same candidate-evaluation budget, with additional backward passes for GCG.
+                  Saved GPT-2 comparison with one benign target and three seeds; this does not establish statistical superiority.
+                  <a class="portfoliolink" href="https://github.com/ayangelah/GCG-toy-experiment/blob/main/GCG.ipynb">Explore the notebook</a>.</p>
+              </div>
+            </li>
+            <hr>
+            <li>
               <label><b>Mechanistic Interpretability of GPT-2 Attention Heads</b></label>
               <i name="date">6/20/26 to 6/27/26 <a href="https://github.com/ayangelah/mech-interp-head-analysis">[Github]</a></i>
               <div class="tags">
@@ -695,7 +987,7 @@
                 which experiences disproportionately higher rates of depression and anxiety. We wanted to combine attachment to
                 local greenspaces with investment in one's own mental health.
                 <br><br>
-                This project was an entry and first place winner in the 2025 QWER Hacks hackathon's Sustainability category, as well 
+                This project was an entry and first place winner in the 2025 QWER Hacks hackathon's Sustainability category, as well
                 as winner for Most Creative and Best Use of Gen AI superlative prizes.
                 </p>
                 <img class="embeddedvideo" src="./attachments/Portfolio/serenestream.png" name="images" alt="Serene Stream app interface for recording nature sound bytes">
@@ -720,11 +1012,41 @@
                 educating others. (Why the unicorn? It's a long-standing symbol of the community: acceptance, uniqueness, and
                 unbridled (ha!) self expression.)
                 <br><br>
-                This project was an entry and third place winner in the 2024 QWER Hacks hackathon's Non-Traditional category, as well 
+                This project was an entry and third place winner in the 2024 QWER Hacks hackathon's Non-Traditional category, as well
                 as winner for Most QWER superlative prize.
                 </p>
                 <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/PRidealWorld.mp4"></video>
                 <a class="portfoliolink" href="https://youtu.be/T4p_q9EnlJQ">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>Infant Speech App</b></label>
+              <i name="date">4/6/23 to 9/30/23 <a href="https://github.com/ayangelah/InfantSpeechApp">[Github]</a></i>
+              <p name="description">The Infant Speech App is a research software tool used to organize and search for phonetically-significant
+                segments in large Pratt audio files. Phonetics research is expedited with this tool, as trends and patterns can be statistically
+                gleaned from larger data sets. This was tested and optimized on a large Spanish database of infant speech, and currently being
+                expanded to accomodate a more extensive English audio archive as well as mapped onto visual representations. This app was a
+                commission project by the <a class="portfoliolink" href="https://languagelab.humanities.ucla.edu/en/" target="_blank">UCLA
+                Language Acquisition Lab</a>. It was built using Shiny R Studio.</p>
+              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/infantappbarebones.mov"></video>
+              <a class="portfoliolink" href="https://www.youtube.com/watch?v=SLScxv6ATRU">Full Video</a>
+              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/infantapppolished.mov"></video>
+              <a class="portfoliolink" href="https://www.youtube.com/watch?v=gHTRUgPDHUI">Full Video</a>
+            </li>
+            <hr>
+            <li>
+              <label><b>MoonStruck</b></label>
+              <i name="date">4/21/23 to 4/23/23 <a href="https://github.com/ayangelah/moonstruck">[Github]</a></i>
+              <p name="description">Moon-Struck is a web application that enables couples who are in a long-distance relationship
+                 to stay in touch with each other and allows them to keep an active role in each others' everyday lives. Moon-Struck
+                  is focused on the “Home Away from Home” track, which is best showcased through a user's ability to see their
+                  partner's real-time weather updates, location, timezone information, and post-it notes. Through these windows into
+                  your loved ones' life, as well as quality-of-life features such as a menstrual calendar and a countdown to your
+                  reunion, Moonstruck allows people to feel as if they were with their partners in real life. Moon-Struck was built
+                  in the MERN software stack; specifically, we used MongoDB with Mongoose, Express, React, and NodeJS. This project
+                  was an entry in the 2023 LA Hacks hackathon.</p>
+              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/LA_Hacks_2023_Submission_-_Moon_Struck.mp4"></video>
+              <a class="portfoliolink" href="https://youtu.be/yq5UsSyhn5g">Full Video</a>
             </li>
             <hr>
             <li>
@@ -767,44 +1089,14 @@
             </li>
             <hr>
             <li>
-              <label><b>MoonStruck</b></label>
-              <i name="date">4/21/23 to 4/23/23 <a href="https://github.com/ayangelah/moonstruck">[Github]</a></i>
-              <p name="description">Moon-Struck is a web application that enables couples who are in a long-distance relationship
-                 to stay in touch with each other and allows them to keep an active role in each others' everyday lives. Moon-Struck
-                  is focused on the “Home Away from Home” track, which is best showcased through a user's ability to see their 
-                  partner's real-time weather updates, location, timezone information, and post-it notes. Through these windows into 
-                  your loved ones' life, as well as quality-of-life features such as a menstrual calendar and a countdown to your 
-                  reunion, Moonstruck allows people to feel as if they were with their partners in real life. Moon-Struck was built 
-                  in the MERN software stack; specifically, we used MongoDB with Mongoose, Express, React, and NodeJS. This project 
-                  was an entry in the 2023 LA Hacks hackathon.</p>
-              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/LA_Hacks_2023_Submission_-_Moon_Struck.mp4"></video>
-              <a class="portfoliolink" href="https://youtu.be/yq5UsSyhn5g">Full Video</a>
-            </li>
-            <hr>
-            <li>
               <label><b>Health Monitoring Mobile App</b></label>
               <i name="date">2/8/22 to 12/10/22 <a href="https://github.com/ayangelah/JIAProject">[Github]</a></i>
               <p name="description">
-                This project was a React Native mobile app commissioned by Dr. Edmund Tsui, a pediatrician at the Geffen Medical Center. It's intended 
-                use is as a self-monitoring symptom diary for his patients with juvenile idiopathic arthritis. I further developed on an 
+                This project was a React Native mobile app commissioned by Dr. Edmund Tsui, a pediatrician at the Geffen Medical Center. It's intended
+                use is as a self-monitoring symptom diary for his patients with juvenile idiopathic arthritis. I further developed on an
                 existing static site and implemented authentication and registration capabilities.
               </p>
               <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/jiaapp.mp4"></video>
-            </li>
-            <hr>
-            <li>
-              <label><b>Infant Speech App</b></label>
-              <i name="date">4/6/23 to 9/30/23 <a href="https://github.com/ayangelah/InfantSpeechApp">[Github]</a></i>
-              <p name="description">The Infant Speech App is a research software tool used to organize and search for phonetically-significant 
-                segments in large Pratt audio files. Phonetics research is expedited with this tool, as trends and patterns can be statistically 
-                gleaned from larger data sets. This was tested and optimized on a large Spanish database of infant speech, and currently being 
-                expanded to accomodate a more extensive English audio archive as well as mapped onto visual representations. This app was a 
-                commission project by the <a class="portfoliolink" href="https://languagelab.humanities.ucla.edu/en/" target="_blank">UCLA 
-                Language Acquisition Lab</a>. It was built using Shiny R Studio.</p>
-              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/infantappbarebones.mov"></video>
-              <a class="portfoliolink" href="https://www.youtube.com/watch?v=SLScxv6ATRU">Full Video</a>
-              <video class="embeddedvideo" controls autoplay muted loop><source src="./attachments/Portfolio/infantapppolished.mov"></video>
-              <a class="portfoliolink" href="https://www.youtube.com/watch?v=gHTRUgPDHUI">Full Video</a>
             </li>
             <hr>
             <li>
@@ -812,8 +1104,8 @@
               <i name="date">3/5/22 to 6/10/22 <a href="http://jzhi.bol.ucla.edu/">[hosted here]</a> <a href="https://github.com/ayangelah/flora-fauna">[Github]</a></i>
               <p name="description">
                 FloraFauna is a web-based application used to keep track of local flora and fauna species within a given geographic area.
-                We built FloraFauna to provide an easily accessible, crowdsourced wildlife population database and tracking software for 
-                researchers and hobbyists alike. Users post and interact with sightings (pictures) of flora and fauna. FloraFauna was a 
+                We built FloraFauna to provide an easily accessible, crowdsourced wildlife population database and tracking software for
+                researchers and hobbyists alike. Users post and interact with sightings (pictures) of flora and fauna. FloraFauna was a
                 group term-project for the Software Construction course at UCLA.
               </p>
               <img class="embeddedvideo" src="./attachments/Portfolio/florafauna1.png" name="images" alt="FloraFauna feed of wildlife sighting posts">
@@ -878,6 +1170,7 @@
       </div>
     </main>
     <script type="module" src="./dist/assets/index-7097a511.js"></script>
+    <script src="./src/project-results.js" defer></script>
     <script>
       (function () {
         const form = document.getElementById('stealth-form');
