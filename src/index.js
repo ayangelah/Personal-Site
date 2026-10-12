@@ -32,19 +32,19 @@ let skybox = new THREE.Mesh(skyboxgeo, materialArray);
 skybox.name = "skybox"
 scene.add(skybox);
 
-//models
-const islandUrl = new URL('./assets/island.glb', import.meta.url)
-const rocksUrl = new URL('./assets/rocks.glb', import.meta.url)
-const cloudsUrl = new URL('./assets/clouds.glb', import.meta.url)
-const treehouseUrl = new URL('./assets/treehouse.glb', import.meta.url)
-const researchUrl = new URL('./assets/research.glb', import.meta.url)
-const artUrl = new URL('./assets/art.glb', import.meta.url)
-const socialsUrl = new URL('./assets/socials.glb', import.meta.url)
-const mailboxUrl = new URL('./assets/mailbox.glb', import.meta.url)
-const lightbulbUrl = new URL('./assets/lightbulb.glb', import.meta.url)
-const gamedevUrl = new URL('./assets/gamedev.glb', import.meta.url)
-const whaleUrl = new URL('./assets/whale.glb', import.meta.url)
-const airplaneUrl = new URL('./assets/airplane.glb', import.meta.url)
+// Resolve model URLs from the page, since the bundle is served from dist/assets.
+const islandUrl = new URL('./assets/island.glb', document.baseURI)
+const rocksUrl = new URL('./assets/rocks.glb', document.baseURI)
+const cloudsUrl = new URL('./assets/clouds.glb', document.baseURI)
+const treehouseUrl = new URL('./assets/treehouse.glb', document.baseURI)
+const researchUrl = new URL('./assets/research.glb', document.baseURI)
+const artUrl = new URL('./assets/art.glb', document.baseURI)
+const socialsUrl = new URL('./assets/socials.glb', document.baseURI)
+const mailboxUrl = new URL('./assets/mailbox.glb', document.baseURI)
+const lightbulbUrl = new URL('./assets/lightbulb.glb', document.baseURI)
+const gamedevUrl = new URL('./assets/gamedev.glb', document.baseURI)
+const whaleUrl = new URL('./assets/whale.glb', document.baseURI)
+const airplaneUrl = new URL('./assets/airplane.glb', document.baseURI)
 
 const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('#bg'),
@@ -160,6 +160,7 @@ assetLoader.load(artUrl.href, function(gltf) {
 var socials = new THREE.Object3D;
 assetLoader.load(socialsUrl.href, function(gltf) {
     socials = gltf.scene;
+    socials.getObjectByName("Discord")?.removeFromParent();
     scene.add(socials);
     socials.name = "socials";
 }, undefined, function(error) {
@@ -264,7 +265,7 @@ function onClick(event) {
             case "Plane011_12":
             case "Plane011_13":
             case "Plane011_14":
-                window.open("./attachments/Resume.pdf");
+                window.open("./attachments/Resume.pdf?v=20261012");
                 break;
             //1: research
             case "Cube015":
@@ -299,13 +300,9 @@ function onClick(event) {
             case "Cube009_1":
                 window.open("https://www.github.com/ayangelah");
                 break;
-            case "Cube012":
-            case "Cube012_1":
-                //discord stuff
-                break;
             //4: contact me
             case "Mailbox":
-                window.open("mailto:ayangelah@gmail.com");
+                window.location.hash = "contactme";
                 break;
             //5: devpost/hackathons
             case "lightbulb":
