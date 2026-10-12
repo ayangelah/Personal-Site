@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from './OrbitControls';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import { gsap } from "gsap";
+import { createCertificateIcon, certificateUrl, certificateLabel } from './certificate';
 
 const scene = new THREE.Scene()
 
@@ -59,6 +60,17 @@ renderer.render( scene, camera);
 window.addEventListener( 'pointermove',(event) => {
     pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 	pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    if (event.target !== renderer.domElement) return;
+    raycaster.setFromCamera(pointer, camera);
+    const isCertificate = raycaster.intersectObjects(scene.children)[0]?.object.name === 'Certificate';
+    renderer.domElement.style.cursor = isCertificate ? 'pointer' : '';
+    renderer.domElement.title = isCertificate ? certificateLabel : '';
+    controls.autoRotate = !isCertificate;
+});
+renderer.domElement.addEventListener('pointerleave', () => {
+    renderer.domElement.style.cursor = '';
+    renderer.domElement.title = '';
+    controls.autoRotate = true;
 });
 window.addEventListener('click', onClick);
 
@@ -160,7 +172,15 @@ assetLoader.load(artUrl.href, function(gltf) {
 var socials = new THREE.Object3D;
 assetLoader.load(socialsUrl.href, function(gltf) {
     socials = gltf.scene;
-    socials.getObjectByName("Discord")?.removeFromParent();
+    const discord = socials.getObjectByName("Discord");
+    if (discord) {
+        const certificate = createCertificateIcon();
+        certificate.position.copy(discord.position);
+        certificate.quaternion.copy(discord.quaternion);
+        certificate.rotateZ(-0.08);
+        discord.parent.add(certificate);
+        discord.removeFromParent();
+    }
     scene.add(socials);
     socials.name = "socials";
 }, undefined, function(error) {
@@ -239,12 +259,14 @@ function onClick(event) {
     // not on HTML content overlaid on top of it or below it when scrolled down.
     if (event.target.id !== 'bg') return;
 
+    pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
     raycaster.setFromCamera(pointer, camera);
 
     const intersects = raycaster.intersectObjects(scene.children);
     //console.log(scene.children);
 
-    if (intersects.length > 1 && intersects[0].object.name != undefined) {
+    if (intersects.length > 0 && intersects[0].object.name != undefined) {
         let selected = intersects[0].object.name;
         //alert(selected);
         //switch statement with links
@@ -299,6 +321,9 @@ function onClick(event) {
             case "Cube009":
             case "Cube009_1":
                 window.open("https://www.github.com/ayangelah");
+                break;
+            case "Certificate":
+                window.open(certificateUrl, '_blank', 'noopener,noreferrer');
                 break;
             //4: contact me
             case "Mailbox":
