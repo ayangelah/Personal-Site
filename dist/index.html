@@ -17,6 +17,8 @@
         overscroll-behavior: none;
       }
       body {
+        background-color: #bdd6ce;
+        width: 100%;
         margin: 0;
         overscroll-behavior: none;
         /*overflow-x: hidden;*/
@@ -42,7 +44,7 @@
       }
 
       .progress-bar-container {
-        position: absolute;
+        position: fixed;
         /*
         left: 50vh;
         top: 50vw;
@@ -50,7 +52,7 @@
         width: 100vw;
         height: 100vh;
         background-color: rgba(247,198,194,255);
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -69,6 +71,7 @@
       }
 
       .namepanel {
+        pointer-events: none;
         color: rgb(255, 255, 255);
         width: 35vw;
         border-radius: 15px;
@@ -100,6 +103,7 @@
       }
 
       main {
+        pointer-events: none;
         vertical-align: top;
         position: absolute;
         top: 60vh;
@@ -110,6 +114,8 @@
         margin: 0;
         background: linear-gradient(180deg, rgba(0,0,0,0), #ed5d0f, #ed5d0f, #c81b26, #9b0f5f, #600479, #160a47, #0b032b);
       }
+
+      main > * { pointer-events: auto; }
 
       .bottomcanvas {
         height: 300vh;
@@ -133,7 +139,7 @@
         box-shadow: 4px 4px 8px pink;
         width: 80%;
         height: 10%;
-        padding: 15px;
+        padding: 0;
         margin: 30px;
         border-radius: 30px;
         border-style: solid;
@@ -144,12 +150,15 @@
       }
 
       .menuitem a {
+        padding: 15px;
+        box-sizing: border-box;
+        width: 100%;
         display: block;
         text-decoration: none;
         color: inherit;
       }
 
-      .menuitem:hover {
+      .menuitem:hover, .menuitem:focus-within {
         background-color: black;
         color: white;
         border-color: white;
@@ -315,7 +324,7 @@
         .menuitem a {
           text-align: left;
           font-size: 14px;
-          width: min-content;
+          width: 100%;
         }
         .bubblegraph {
           height: 35vh;
@@ -340,14 +349,90 @@
         }
       }
   
+
+      /* Island controls stay separate from the clickable canvas. */
+      .island-tools {
+        position: absolute;
+        top: calc(60vh + 180px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(92vw, 480px);
+        z-index: 10;
+        text-align: center;
+        color: #49394e;
+        font: 13px/1.5 'Courier New', monospace;
+      }
+      .island-help { margin: 0 0 8px; }
+      .island-buttons { display: flex; justify-content: center; gap: 8px; }
+      .island-tools button, .island-tools summary, #skip-island-loading {
+        box-sizing: border-box;
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 1px solid #c8b0bc;
+        border-radius: 22px;
+        color: #49394e;
+        background: #fff8ed;
+        font: inherit;
+        cursor: pointer;
+      }
+      .island-tools :focus-visible, #skip-island-loading:focus-visible,
+      .menuitem a:focus-visible {
+        outline: 3px solid #66518a;
+        outline-offset: 3px;
+      }
+      #island-links { position: relative; }
+      #island-link-list {
+        position: absolute;
+        right: 0;
+        bottom: calc(100% + 10px);
+        width: min(310px, 85vw);
+        max-height: min(440px, 60vh);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        margin: 0;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: left;
+        border: 1px solid #c8b0bc;
+        border-radius: 16px;
+        background: #fff8ed;
+        box-shadow: 0 6px 20px #49394e26;
+      }
+      #island-link-list a {
+        display: block;
+        padding: 11px 12px;
+        border-radius: 6px;
+        color: inherit;
+        text-decoration: none;
+      }
+      #island-link-list a:hover, #island-link-list a:focus-visible { background: #eee2ed; }
+      #island-tooltip {
+        position: fixed;
+        z-index: 12;
+        pointer-events: none;
+        max-width: min(280px, 80vw);
+        padding: 8px 12px;
+        border: 1px solid #c8b0bc;
+        border-radius: 12px;
+        color: #49394e;
+        background: #fff8ed;
+        font: 13px/1.4 'Courier New', monospace;
+      }
+      #island-status:empty { display: none; }
+      #skip-island-loading { margin-top: 24px; font: 14px 'Courier New', monospace; }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .menuitem { transition: none; }
+      }
     </style>
-    <script type="module" crossorigin src="./dist/assets/index-ed7c5d39.js"></script>
+    <script type="module" crossorigin src="./dist/assets/index-27817e6a.js"></script>
     <link rel="stylesheet" href="./dist/assets/index-ca4c7e66.css">
   </head>
   <body>
-    <div class="progress-bar-container">
+    <div class="progress-bar-container" aria-busy="false">
         <label id="progresstext" for="progress-bar">Loading...</label>
         <progress id="progress-bar" value="0" max="100"></progress>
+        <button id="skip-island-loading" type="button">Continue to site</button>
     </div>
     <div class="namepanel">
       <p><span>
@@ -397,7 +482,19 @@
           </div>
         </li>
       </ul>
-    <canvas class="topcanvas" id="bg"></canvas>
+    <canvas class="topcanvas" id="bg" aria-hidden="true"></canvas>
+    <div class="island-tools" aria-label="Island controls">
+      <p id="island-status" role="status"></p>
+      <p class="island-help">Drag to turn &middot; Select an object to explore</p>
+      <div class="island-buttons">
+        <button id="island-motion" type="button" hidden>Pause motion</button>
+        <details id="island-links">
+          <summary>Island links</summary>
+          <ul id="island-link-list" aria-label="Island destinations"></ul>
+        </details>
+      </div>
+    </div>
+    <div id="island-tooltip" hidden aria-hidden="true"></div>
   </body>
     <main>
       <div class="textcontainer">
