@@ -417,6 +417,23 @@
         
       }
 
+      .project-figure {
+        max-width: 880px;
+        margin: 24px 0 32px;
+      }
+
+      .project-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .project-figure figcaption {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
       .portfoliolink {
         display: inline-block;
         color: blanchedalmond;
@@ -915,40 +932,34 @@
           <div id="stealth-slot"></div>
           <hr class="stealth-divider">
           <ul>
-            <li>
-              <label><b>HarmBench-Inspired Adversarial Training (R2D2)</b></label>
-              <i><a href="https://github.com/ayangelah/R2D2-toy-experiment">[Github]</a></i>
+            <li id="r2d2">
+              <label><b>R2D2: Dynamic vs. Static Adversarial Training</b></label>
+              <i><a href="https://github.com/ayangelah/R2D2-toy-experiment/">[Github]</a>
+                <a href="./research.html#r2d2">[Writeup]</a></i>
               <div class="tags">
                 <span class="tag tag-coral">Adversarial Training</span>
                 <span class="tag tag-lavender">AI Safety</span>
                 <span class="tag tag-teal">nanoGCG</span>
                 <span class="tag tag-sky">LoRA</span>
               </div>
-              <p name="description">A toy implementation of the R2D2 adversarial-training approach from
-                HarmBench, using GPT-2, nanoGCG, and LoRA. I explored static training on a fixed adversarial
-                suffix, then a dynamic loop that refreshes the suffix against the updated model before
-                each training step. The objective combines learning a refusal response, penalizing an
-                unwanted target, and supervised examples intended to preserve helpful behavior. The
-                current notebook focuses on one toy behavior and one evolving attack string; broader
-                attack-pool comparisons are still in progress.</p>
-              <div class="project-results">
-                <div class="result-table-scroll" role="region" aria-label="R2D2 experiment status" tabindex="0">
-                <table class="experiment-status" aria-describedby="r2d2-results-note">
-                  <caption>Training approaches and evaluation status</caption>
-                  <thead>
-                    <tr><th scope="col">Experiment</th><th scope="col">Approach</th><th scope="col">Status</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><th scope="row">Static training</th><td>Train against a fixed adversarial suffix</td><td><span class="result-status">Implemented</span></td></tr>
-                    <tr><th scope="row">Dynamic training</th><td>Refresh the suffix with nanoGCG each round</td><td><span class="result-status">Implemented</span></td></tr>
-                    <tr><th scope="row">Attack-pool comparison</th><td>Expand to six toy behaviors</td><td><span class="result-status pending">Evaluation pending</span></td></tr>
-                  </tbody>
-                </table>
-                </div>
-                <p class="result-note" id="r2d2-results-note">GPT-2 with LoRA adapters. This shows the experiment's
-                  implementation status; robustness and helpfulness comparisons have not yet been evaluated.
-                  <a class="portfoliolink" href="https://github.com/ayangelah/R2D2-toy-experiment/blob/main/R2D2_toy_experiment.ipynb">Explore the notebook</a>.</p>
-              </div>
+              <p name="description">I compared static and dynamic adversarial training on GPT-2 using
+                LoRA and nanoGCG, inspired by HarmBench's R2D2 approach. With eight training behaviors,
+                four held-out behaviors, and a matched GCG training budget, I tested whether refreshing
+                attacks against the evolving model improved resistance to fresh attacks. Both defenses
+                reached 0% attack success, but dynamic training made the targets harder to elicit:
+                mean target negative log-likelihood rose to 21.25, compared with 14.45 for static
+                training. This single-seed toy study also exposed a limitation of exact-match
+                evaluation: semantically equivalent outputs can count as failed attacks.</p>
+              <figure class="project-figure">
+                <a href="./attachments/Portfolio/r2d2.png" target="_blank" rel="noopener" aria-label="Open the R2D2 results figure at full size">
+                  <img class="embeddedvideo" src="./attachments/Portfolio/r2d2.png" width="1200" height="900"
+                    alt="R2D2 results: corrected attack success falls from 100% at baseline to 0% for both defenses. Dynamic training has higher fresh-attack target NLL on all four held-out behaviors; both defenses generate repeated Nope responses."
+                    aria-describedby="r2d2-figure-note">
+                </a>
+                <figcaption id="r2d2-figure-note">The figure uses a post-hoc semantic correction: baseline
+                  attack success is 75% by exact match and 100% after correction.
+                  <a class="portfoliolink" href="./attachments/Portfolio/r2d2.png" target="_blank" rel="noopener">View full-size figure</a>.</figcaption>
+              </figure>
             </li>
             <hr>
             <li>
