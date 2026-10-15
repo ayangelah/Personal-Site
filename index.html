@@ -935,7 +935,7 @@
             <li id="r2d2">
               <label><b>R2D2: Dynamic vs. Static Adversarial Training</b></label>
               <i><a href="https://github.com/ayangelah/R2D2-toy-experiment/">[Github]</a>
-                <a href="./attachments/R2D2_Writeup.pdf">[Writeup]</a></i>
+                <a href="./attachments/R2D2_Writeup.pdf?v=20261014">[Writeup]</a></i>
               <div class="tags">
                 <span class="tag tag-coral">Adversarial Training</span>
                 <span class="tag tag-lavender">AI Safety</span>
@@ -944,21 +944,23 @@
               </div>
               <p name="description">I compared static and dynamic adversarial training on GPT-2 using
                 LoRA and nanoGCG, inspired by HarmBench's R2D2 approach. With eight training behaviors,
-                four held-out behaviors, and a matched GCG training budget, I tested whether refreshing
-                attacks against the evolving model improved resistance to fresh attacks. Both defenses
-                reached 0% attack success, but dynamic training made the targets harder to elicit:
-                mean target negative log-likelihood rose to 21.25, compared with 14.45 for static
-                training. This single-seed toy study also exposed a limitation of exact-match
-                evaluation: semantically equivalent outputs can count as failed attacks.</p>
+                four held-out behaviors, and a matched GCG training budget, both defenses reached 0%
+                semantic attack success. Dynamic training made fresh attacks harder to optimize, with
+                mean target negative log-likelihood of 21.25 versus 14.45 for static training. But both
+                defenses also refused all four benign prompts related to safety, and dynamic training
+                refused three of four unrelated benign prompts versus one for static training. This
+                single-seed toy study exposed a tradeoff between attack resistance and useful behavior,
+                along with the need for semantic evaluation beyond exact-match metrics.</p>
               <figure class="project-figure">
-                <a href="./attachments/Portfolio/r2d2.png" target="_blank" rel="noopener" aria-label="Open the R2D2 results figure at full size">
-                  <img class="embeddedvideo" src="./attachments/Portfolio/r2d2.png" width="1200" height="900"
-                    alt="R2D2 results: corrected attack success falls from 100% at baseline to 0% for both defenses. Dynamic training has higher fresh-attack target NLL on all four held-out behaviors; both defenses generate repeated Nope responses."
+                <a href="./attachments/Portfolio/r2d2.png?v=20261014" target="_blank" rel="noopener" aria-label="Open the R2D2 results figure at full size">
+                  <img class="embeddedvideo" src="./attachments/Portfolio/r2d2.png?v=20261014" width="1200" height="1025"
+                    alt="R2D2 results: semantic attack success falls from 100% at baseline to 0% for both defenses, with higher fresh-attack target NLL after dynamic training. Both defenses refuse 100% of safety-related benign prompts; unrelated benign refusal is 25% for static and 75% for dynamic training."
                     aria-describedby="r2d2-figure-note">
                 </a>
-                <figcaption id="r2d2-figure-note">The figure uses a post-hoc semantic correction: baseline
-                  attack success is 75% by exact match and 100% after correction.
-                  <a class="portfoliolink" href="./attachments/Portfolio/r2d2.png" target="_blank" rel="noopener">View full-size figure</a>.</figcaption>
+                <figcaption id="r2d2-figure-note">Semantic evaluation includes LLM-judged equivalents:
+                  baseline attack success is 75% by exact match and 100% semantically. Each benign
+                  refusal category contains four held-out prompts.
+                  <a class="portfoliolink" href="./attachments/Portfolio/r2d2.png?v=20261014" target="_blank" rel="noopener">View full-size figure</a>.</figcaption>
               </figure>
             </li>
             <hr>
