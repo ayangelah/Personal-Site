@@ -227,113 +227,6 @@
 
       .hidden { display: none !important; }
 
-      .stealth-gate {
-        max-width: 420px;
-        margin: 24px 15px 10px;
-        padding: 28px 26px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.12);
-        backdrop-filter: blur(14px) saturate(140%);
-        -webkit-backdrop-filter: blur(14px) saturate(140%);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 30px rgba(96, 4, 121, 0.25);
-        text-align: center;
-        color: antiquewhite;
-        font-family: 'Courier New', Courier, monospace;
-      }
-      .stealth-lock-title {
-        font-size: 22px;
-        font-weight: bold;
-        margin: 0 0 6px;
-        color: blanchedalmond;
-      }
-      .stealth-lock-sub {
-        font-size: 13px;
-        opacity: 0.85;
-        margin: 0 0 16px;
-      }
-      #stealth-form {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      #stealth-password {
-        flex: 1;
-        min-width: 160px;
-        padding: 11px 16px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.12);
-        color: #fff;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 14px;
-        letter-spacing: 2px;
-        outline: 0;
-        box-sizing: border-box;
-      }
-      #stealth-password::placeholder { color: rgba(255, 255, 255, 0.6); }
-      #stealth-unlock {
-        padding: 11px 20px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(155, 15, 95, 0.75);
-        color: #fff;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 13px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: 0.25s;
-      }
-      #stealth-unlock:hover { background: rgba(200, 27, 38, 0.85); }
-      #stealth-unlock:disabled { cursor: progress; }
-      #stealth-unlock.is-loading::before {
-        content: '';
-        display: inline-block;
-        width: 11px;
-        height: 11px;
-        margin-right: 8px;
-        vertical-align: -1px;
-        border: 2px solid rgba(255, 255, 255, 0.35);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: stealth-spin 0.8s linear infinite;
-      }
-      @keyframes stealth-spin { to { transform: rotate(360deg); } }
-      /* Collapses the gate; JS pins its current height first so it can animate to 0. */
-      .stealth-gate.is-closing {
-        height: 0 !important;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        border-width: 0;
-        opacity: 0;
-        overflow: hidden;
-        transition: height 0.5s ease, margin 0.5s ease, padding 0.5s ease, opacity 0.3s ease;
-      }
-      /* 0fr -> 1fr grid row animates to the content's natural height. */
-      #stealth-slot {
-        display: grid;
-        grid-template-rows: 0fr;
-        opacity: 0;
-        transition: grid-template-rows 0.7s ease, opacity 0.7s ease 0.15s;
-      }
-      #stealth-slot > .stealth-slot-inner { overflow: hidden; min-height: 0; }
-      #stealth-slot.is-open { grid-template-rows: 1fr; opacity: 1; }
-      @media (prefers-reduced-motion: reduce) {
-        .stealth-gate.is-closing, #stealth-slot { transition: none; }
-      }
-      .stealth-error {
-        color: #ffb3c1;
-        font-size: 13px;
-        margin: 12px 0 0;
-      }
-      .stealth-divider {
-        margin: 30px 15px;
-      }
-
       #codeportfolio ul li {
         padding: 15px;
         margin: 15px;
@@ -920,17 +813,6 @@
       <div class="textcontainer">
         <div class="textsection" id="codeportfolio">
           <h1>Code Portfolio</h1>
-          <div id="stealth-gate" class="stealth-gate">
-            <p class="stealth-lock-title">&#128274; Private Projects</p>
-            <p class="stealth-lock-sub">Latest, unpublished work. Enter the password to view.</p>
-            <form id="stealth-form" autocomplete="off">
-              <input id="stealth-password" type="password" placeholder="password" autocomplete="off" />
-              <button id="stealth-unlock" type="submit">Unlock</button>
-            </form>
-            <p id="stealth-error" class="stealth-error hidden">Incorrect password.</p>
-          </div>
-          <div id="stealth-slot"></div>
-          <hr class="stealth-divider">
           <ul>
             <li id="r2d2">
               <label><b>R2D2: Dynamic vs. Static Adversarial Training</b></label>
@@ -962,6 +844,30 @@
                   refusal category contains four held-out prompts.
                   <a class="portfoliolink" href="./attachments/Portfolio/r2d2.png?v=20261014" target="_blank" rel="noopener">View full-size figure</a>.</figcaption>
               </figure>
+            </li>
+            <hr>
+            <li id="pupillometry">
+              <label><b>Pupillometry from a Phone Camera</b></label>
+              <i name="date">2026 <a href="https://github.com/ayangelah/Pupilometry_Fine_Tuning">[Github]</a></i>
+              <div class="tags">
+                <span class="tag tag-teal">Semantic Segmentation</span>
+                <span class="tag tag-coral">Model Fine-Tuning</span>
+                <span class="tag tag-sky">On-Device ML</span>
+                <span class="tag tag-lavender">Medical AI</span>
+              </div>
+              <p name="description">Offline, on-device pupillometry from an ordinary phone camera: recovering
+                pupil diameter over time and pupillary-light-reflex (PLR) metrics without dedicated hardware, as a
+                triage/screening aid (not a diagnostic). Each eye-video frame is segmented with RITnet, a compact 4-class
+                (background / sclera / iris / pupil) CNN, reframed to its expected near-eye input. A measurement layer then
+                fits the iris circle from the limbus and localizes the pupil inside it (color-space Otsu thresholding with
+                glint removal and a geometry/quality gate). The calibration trick: the iris is population-stable (~11.7&nbsp;mm),
+                so measuring iris-in-pixels alongside pupil-in-pixels in the same frame turns the iris into a built-in ruler
+                that cancels camera distance, zoom, and angle: pupil_mm = (pupil_px / iris_px) &#215; IRIS_MM. From the
+                per-frame diameters it derives clinical PLR metrics (baseline, minimum, % constriction, latency,
+                constriction/dilation velocity). Where the pretrained detector underperforms on visible-light brown eyes,
+                RITnet is fine-tuned on hand-labeled RGB frames.</p>
+              <img class="embeddedvideo" src="./attachments/Portfolio/pupil_pipeline.png" name="images" alt="Four-panel pipeline: original eye crop, saturation reference channel, raw RITnet pupil segmentation mask, and the RITnet pupil with fitted iris and pupil circles">
+              <img class="embeddedvideo" src="./attachments/Portfolio/pupil_circlefit.png" name="images" alt="Close-up eye with a fitted blue iris circle and green pupil circle used for iris-grounded millimeter calibration">
             </li>
             <hr>
             <li>
@@ -1285,113 +1191,5 @@
     </main>
     <script type="module" src="./dist/assets/index-27817e6a.js"></script>
     <script src="./src/project-results.js" defer></script>
-    <script>
-      (function () {
-        const form = document.getElementById('stealth-form');
-        if (!form) return;
-        const pwInput = document.getElementById('stealth-password');
-        const errEl = document.getElementById('stealth-error');
-        const gate = document.getElementById('stealth-gate');
-        const slot = document.getElementById('stealth-slot');
-        const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-
-        // Load the (large) ciphertext only when someone actually tries to unlock,
-        // so public visitors never download it.
-        let blobPromise = null;
-        function loadBlob() {
-          if (window.STEALTH_BLOB) return Promise.resolve();
-          if (blobPromise) return blobPromise;
-          blobPromise = new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = './stealth.enc.js';
-            s.onload = resolve;
-            s.onerror = () => { blobPromise = null; reject(new Error('load failed')); };
-            document.body.appendChild(s);
-          });
-          return blobPromise;
-        }
-
-        async function decrypt(password, blob) {
-          const enc = new TextEncoder();
-          const keyMaterial = await crypto.subtle.importKey(
-            'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
-          );
-          const key = await crypto.subtle.deriveKey(
-            { name: 'PBKDF2', salt: fromB64(blob.salt), iterations: blob.iter, hash: 'SHA-256' },
-            keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['decrypt']
-          );
-          const pt = await crypto.subtle.decrypt(
-            { name: 'AES-GCM', iv: fromB64(blob.iv) }, key, fromB64(blob.ct)
-          );
-          return new TextDecoder().decode(pt);
-        }
-
-        const unlockBtn = document.getElementById('stealth-unlock');
-        let busy = false;
-
-        function setLoading(on) {
-          busy = on;
-          unlockBtn.disabled = on;
-          pwInput.disabled = on;
-          unlockBtn.classList.toggle('is-loading', on);
-          unlockBtn.setAttribute('aria-busy', String(on));
-          unlockBtn.textContent = on ? 'Unlocking' : 'Unlock';
-        }
-
-        function showError(msg) {
-          setLoading(false);
-          errEl.textContent = msg;
-          errEl.classList.remove('hidden');
-          pwInput.focus();
-        }
-
-        // Swap the gate for the decrypted content: collapse one, expand the other.
-        function reveal() {
-          gate.style.height = gate.offsetHeight + 'px';
-          requestAnimationFrame(() => {
-            gate.classList.add('is-closing');
-            slot.classList.add('is-open');
-          });
-          gate.addEventListener('transitionend', function onEnd(e) {
-            if (e.target !== gate || e.propertyName !== 'height') return;
-            gate.removeEventListener('transitionend', onEnd);
-            gate.classList.add('hidden');
-          });
-        }
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          if (busy) return;
-          errEl.classList.add('hidden');
-          setLoading(true);
-          try {
-            await loadBlob();
-          } catch (err) {
-            showError('Could not load private content. Try again.');
-            return;
-          }
-          if (!window.STEALTH_BLOB) {
-            showError('No private content is published yet.');
-            return;
-          }
-          let html;
-          try {
-            // AES-GCM throws on a wrong password (auth tag mismatch).
-            html = await decrypt(pwInput.value, window.STEALTH_BLOB);
-          } catch (err) {
-            showError('Incorrect password.');
-            pwInput.value = '';
-            return;
-          }
-          const inner = document.createElement('div');
-          inner.className = 'stealth-slot-inner';
-          inner.innerHTML = html;
-          slot.appendChild(inner);
-          // Decode embedded images first so the expand animates to the final height.
-          await Promise.all([...inner.querySelectorAll('img')].map((img) => img.decode().catch(() => {})));
-          reveal();
-        });
-      })();
-    </script>
   </body>
 </html>

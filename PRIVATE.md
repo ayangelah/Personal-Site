@@ -1,9 +1,11 @@
-# Password-gated private projects (inline)
+# Archived password-gated project workflow
 
-The public site (`index.html`) is fully public. Inside **Code Portfolio** there's
-a locked glass panel: entering the password decrypts your **stealth projects**
-in the browser and injects them inline. Nothing private is in the public page
-until then.
+Pupillometry is now public in `index.html`, with its images in
+`attachments/Portfolio/`. There are no active private project cards or password
+panel. The original `private-src/` files remain git-ignored, and the encryption
+script and ciphertext are retained as an archive. The workflow below describes
+the former setup; using it again requires restoring the password panel and its
+browser decryption code.
 
 ## Files
 
