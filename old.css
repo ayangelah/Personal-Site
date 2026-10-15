@@ -321,6 +321,7 @@ body.dark {
     left: 20vw;
     top: 1.5%;
     width: 800px;
+    max-width: 80%;
 }
 #keyart-2 {
     z-index: -7;
@@ -328,5 +329,26 @@ body.dark {
     left: 0px;
     top: 25%;
     width: 700px;
+    max-width: 100%;
 }
 
+@media (max-width: 900px) {
+    .home {
+        top: 16px;
+        left: 16px;
+    }
+
+    .box {
+        padding-top: 72px;
+        padding-left: 0;
+    }
+
+    .box li {
+        width: 100%;
+    }
+
+    .post {
+        position: relative;
+        width: calc(100% - 30px);
+    }
+}

@@ -46,12 +46,9 @@
 
       .progress-bar-container {
         position: fixed;
-        /*
-        left: 50vh;
-        top: 50vw;
-        transform: translate(-50vw, -50vh);*/
-        width: 100vw;
-        height: 100vh;
+        inset: 0;
+        box-sizing: border-box;
+        padding: 24px;
         background-color: rgba(247,198,194,255);
         display: none;
         flex-direction: column;
@@ -68,7 +65,7 @@
       .progress-bar-container label {
         color: white;
         font-family: monospace;
-        font-size: 4rem;
+        font-size: clamp(2rem, 8vw, 4rem);
       }
 
       .namepanel {
@@ -242,6 +239,7 @@
         color: antiquewhite;
         line-height: 30px;
         width: 50%;
+        max-width: calc(100% - 60px);
         padding: 15px;
         margin: 15px;
         font-family: 'Courier New', Courier, monospace;
@@ -304,6 +302,8 @@
 
       .embeddedvideo {
         height: 40vh;
+        max-width: 100%;
+        object-fit: contain;
         border-radius: 10px;
         padding-left: 0;
         margin-left: 0;
@@ -581,18 +581,30 @@
 
       @media screen and (max-width: 768px) {
         .namepanel {
-          font-size: 40px;
+          font-size: clamp(24px, 6vw, 40px);
+          width: 42vw;
+          padding: 0;
+          margin: 20px 15px;
+        }
+        .menu {
+          width: 42vw;
+          height: auto;
+          right: 15px;
+          padding: 0;
+          margin: 16px 0;
+        }
+        .menu .menuitem {
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0 0 10px;
         }
         .embeddedvideo {
-          width: 85vw;
+          width: 100%;
           height: auto;
         }
         .textsection {
-        line-height: 30px;
-        }
-        
-        #codeportfolio ul li p {
-          line-height: 3vh;
+          width: auto;
+          line-height: 30px;
         }
         #aboutme {
           line-height: 30px;
@@ -605,6 +617,28 @@
           text-align: left;
           font-size: 14px;
           width: 100%;
+        }
+        .minimenu {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          width: auto;
+          margin: 16px 30px;
+        }
+        .minimenu li {
+          flex: 1 1 100px;
+          width: auto;
+        }
+        .minimenu .menuitem {
+          box-sizing: border-box;
+          width: 100%;
+          margin: 0;
+        }
+        .minimenu .menuitem a { text-align: center; }
+        #contactme form { padding-left: 0; }
+        #contactme input, #contactme textarea {
+          box-sizing: border-box;
+          max-width: 100%;
         }
       }
 
