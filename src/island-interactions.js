@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { certificateUrl, certificateLabel } from './certificate.js';
 
 export const islandLinks = {
-    resume: { label: 'Resume', href: './attachments/Resume.pdf?v=20261012' },
+    resume: { label: 'Resume', href: './attachments/Resume.pdf?v=20261104' },
     research: { label: 'Research', href: './research.html' },
     book1: { label: 'Citric acid and cardiomyocytes', href: './attachments/The Effects of Citric Acid on Contraction of Mouse Cardiomyocytes.pdf' },
     book2: { label: 'Ukrainian phonetics', href: './attachments/Illustrations of Ukrainian Phonetics.pdf' },
