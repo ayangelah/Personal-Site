@@ -327,6 +327,10 @@
         line-height: 1.5;
       }
 
+      #shortcut-learning .shortcut-margins {
+        max-width: 571px;
+      }
+
       .portfoliolink {
         display: inline-block;
         color: blanchedalmond;
@@ -848,6 +852,53 @@
         <div class="textsection" id="codeportfolio">
           <h1>Code Portfolio</h1>
           <ul>
+            <li id="shortcut-learning">
+              <label><b>Shortcut Learning in Gemma 2</b></label>
+              <i name="date">In progress</i>
+              <div class="tags">
+                <span class="tag tag-coral">Shortcut Learning</span>
+                <span class="tag tag-lavender">Mechanistic Interpretability</span>
+                <span class="tag tag-sky">LoRA</span>
+                <span class="tag tag-teal">Gemma 2 2B</span>
+              </div>
+              <p name="description">I'm investigating whether fine-tuning teaches a model to rely on
+                an irrelevant answer cue. In a paired multiple-choice task, Gemma 2 2B is instructed
+                to answer Question A and ignore Question B. I fine-tune LoRA adapters with A and B's
+                correct answers in the same option, then swap only B's answer positions in matched
+                evaluation prompts to test whether that cue affects the model's answers to A.</p>
+              <p name="description">In the notebook's saved 100-pair evaluation, accuracy was
+                <b>76% with aligned answers</b> and <b>44% with conflicting answers</b>.
+                I also compare attention-head outputs across the matched prompts, ranking all
+                208 heads and using paired bootstrap resampling to check how consistently candidate
+                heads stand out.</p>
+              <figure class="project-figure shortcut-margins">
+                <a href="./attachments/Portfolio/shortcut_learning_margins.png" target="_blank" rel="noopener" aria-label="Open the shortcut learning paired-margin plot at full size">
+                  <img class="embeddedvideo" src="./attachments/Portfolio/shortcut_learning_margins.png" width="571" height="432" loading="lazy"
+                    alt="Scatter plot of 100 question pairs showing the correct-A logit margin with aligned answers minus the margin with conflicting answers. Most points lie to the right of zero."
+                    aria-describedby="shortcut-margins-note">
+                </a>
+                <figcaption id="shortcut-margins-note">Each dot is one matched question pair.
+                  Positive values mean alignment increased the logit margin for A's correct answer;
+                  the dashed gray line marks zero and the red line marks the mean.
+                  <a class="portfoliolink" href="./attachments/Portfolio/shortcut_learning_margins.png" target="_blank" rel="noopener">View full-size plot</a>.</figcaption>
+              </figure>
+              <figure class="project-figure">
+                <a href="./attachments/Portfolio/shortcut_learning_heads.svg" target="_blank" rel="noopener" aria-label="Open the shortcut learning attention-head heatmap at full size">
+                  <img class="embeddedvideo" src="./attachments/Portfolio/shortcut_learning_heads.svg" width="1152" height="432" loading="lazy"
+                    alt="Heatmap of mean paired activation L2 distances across 26 layers and eight heads per layer, with the ten highest-scoring heads outlined. Layer 17 head 3 has the largest distance."
+                    aria-describedby="shortcut-heads-note">
+                </a>
+                <figcaption id="shortcut-heads-note">Mean L2 distance between head outputs for
+                  aligned and conflicting prompts, measured at the final prompt token. Outlined
+                  cells are the ten highest scores. These activation differences identify heads
+                  for follow-up causal tests.
+                  <a class="portfoliolink" href="./attachments/Portfolio/shortcut_learning_heads.svg" target="_blank" rel="noopener">View full-size heatmap</a>.</figcaption>
+              </figure>
+              <p name="description"><b>Next:</b> rerun the revised dataset and test candidate heads
+                with causal ablations. The figures above are saved notebook diagnostics from an
+                ongoing, single-checkpoint study.</p>
+            </li>
+            <hr>
             <li id="r2d2">
               <label><b>R2D2: Dynamic vs. Static Adversarial Training</b></label>
               <i><a href="https://github.com/ayangelah/R2D2-toy-experiment/">[Github]</a>
