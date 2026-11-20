@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
-export const certificateUrl = 'https://bluedot.org/certification?id=recBVEeBncDGWmws1';
-export const certificateLabel = 'Future of AI certificate · BlueDot Impact';
+export const certificateUrl = 'https://bluedot.org/certification?id=recV0ifYYtPSU4HXL';
+export const certificateLabel = 'Technical AI Safety certificate · BlueDot Impact';
 
 export function createCertificateIcon() {
     const certificate = new THREE.Group();
